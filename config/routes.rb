@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :blogs
   devise_for :users
   get 'blogs/index'
 
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
   get 'users/update'
 
   get 'users/delete'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
