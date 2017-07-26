@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create A League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+</head>
+<body>
+    
+    <div class="row">
+        <div class="input-field col s6">
+             <input value="Enter League Name" id="league_name" type="text" class="validate">
+             <label class="active" for="league_name">League Name</label>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <p id="keepers">Keepers?
+                <div class="switch">
+                    <label>
+                      No
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      Yes
+                    </label>
+                 </div>
+            </p>
+            
+    <div class="container">
+        <div class="row">
+            <p id="trade-pick">Trade draft picks?
+                <div class="switch">
+                    <label>
+                      No
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      Yes
+                    </label>
+                 </div>
+            </p>
+          
+             <!--Need to activate jQuery-->
+             <div class="input-field col s12">
+                <select>
+                  <option value="1">8</option>
+                  <option value="2">10</option>
+                  <option value="3">12</option>
+                  <option value="4">14</option>
+                  <option value="5">16</option>
+                </select>
+                <label>Number of Teams?</label>
+             </div>
+        </div>
+    </div>
+    
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+        <i class="material-icons right">Create League</i>
+    </button>
+
+
+<script type="text/javascript" src="https://use.fontawesome.com/a6f8944a21.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+</body>
+</html>
