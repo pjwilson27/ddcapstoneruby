@@ -17,7 +17,7 @@
     
 <!--------------------Main Site Navigation------------------------------->
 <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
                 <span class="sr-only">Toggle Navigation</span>
@@ -42,7 +42,7 @@
     </nav>
 <!--------------------Central Container------------------------------->
 <div class="container">
-        <div class="news-feed">
+        <div class="col-md-6">
             <h1>This is just some dummy text</h1>
             
             <h2>Blah blah blah dummy text</h2>
@@ -51,9 +51,9 @@
         </div>
 </div>    
 <!--------------------Scoreboard Container------------------------------->
-<section class="scoreboard">
-    <div class="container">
-        <div>
+<section>
+    <div class="container-fluid">
+        <div class="col-md-3">
             <table>
             <thead>Around the League</thead>
                 <tr>
@@ -80,13 +80,27 @@
 </section>
 <!--------------------Player Ranking Container------------------------------->
 <div class="container">
-        <div class="rankings">
+        <div class="col-md-3">
+            <div class="rankings">
+            <table>
+                <thead>Experts Top Three Overall</thead>
+                <tr>
+                    <td>1)Bobby Boucher</td>
+                </tr>
+                <tr>
+                    <td>2)OJ Simpson</td>
+                </tr>
+                <tr>
+                    <td>3)Otherguy</td>
+                </tr>
+            </table>
             <!---Player Ranking Code Here--->
             <!--Not decided yet on if I want the rankings to be updated manually.
             My thoughts right now are to update the rankings manually via csv file
             and upload them here to display that data 
             this will be on the bottom left side of the page-->
         </div>
+    </div>
 </div>    
 <!--------------------Ad Container------------------------------->
 <div class="container">
