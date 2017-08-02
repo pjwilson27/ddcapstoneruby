@@ -79,6 +79,12 @@ color : #000;
     background-color: #f5f5f5;
 }
 
+#cc {
+    width: 90px;
+    height: 100px;
+    display: inline-block;
+}
+
 .fa fa-copyright{
     color: black;
 }
