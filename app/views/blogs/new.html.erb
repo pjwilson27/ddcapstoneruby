@@ -1,2 +1,73 @@
-<h1>Blogs#new</h1>
-<p>Find me in app/views/blogs/new.html.erb</p>
+<head>
+    
+<title>Draft Dynasty</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="app/assets/stylesheets/main.css">
+
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand"><img id="logo" src="./app/assets/images/DD-logo.jpg"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav">
+                <li><a href="/about.html">About Us</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/leagues.html">Leagues</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true">Signup</i></a></li>
+                <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <h1>Create a Blog</h1>
+    
+    <div class="col-md-8">
+    <%= render partial: 'form', locals: {blog: @blog, user: @user } %>
+    
+</body>
+
+
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1><i class="fa fa-copyright" aria-hidden="true">Copyright Draft Dynasty Inc. 2017</i></h1>
+                <p>123 Main Street, Columbus, Ohio 43054</p>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Contribute</a></li>
+                <li><a href="#">Advertise</a></li>
+                
+                <div class="sponsors">
+                    <img id="cc" src="./app/assets/images/cc.jpg">
+                    <img id="cc" src="./app/assets/images/paypal.jpg">
+                    <img id="cc" src="./app/assets/images/statsinc.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+  
+<script type="text/javascript" src="https://use.fontawesome.com/a6f8944a21.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
