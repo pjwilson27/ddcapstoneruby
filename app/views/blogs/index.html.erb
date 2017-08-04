@@ -36,7 +36,10 @@
     <div class="container">
         <div class="row">
             <div class="news-feed">
-                <!--News feed content-->
+                <strong><ul>All Wikis</ul></strong>
+                    <% @blogs.each do |b| %>
+                        <li><%= link_to b.title, b %></li>
+                    <% end %>
             </div>
         </div>
     </div>    

@@ -14,6 +14,14 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    
+    if @blog.save
+      flash[:notice] = "Blog has been successfully uploaded!"
+      redirect_to @blog
+    else
+      flash[:error] = "There was a problem. Please try again later."
+      redirect_to
+    end
   end
 
   def edit

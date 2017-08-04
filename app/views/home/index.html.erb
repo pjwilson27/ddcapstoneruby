@@ -21,7 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img id="logo" src="./app/assets/images/DD-logo.jpg"></a>
+            <a href=<% link_to home_index_path %> class="navbar-brand"><img id="logo" src="./app/assets/images/DD-logo.jpg"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="nav navbar-nav">
@@ -84,7 +84,7 @@
     
     <div class="post">
         <strong><p>Admins Only:</p></strong>
-        <%= link_to "Post A New Blog", blogs_new_path, :class => 'button-links' %>
+        <%= link_to "Post A New Blog", new_blog_path, :class => 'button-links' %>
     </div>
 </div>
 <div id="col3">
