@@ -70,6 +70,13 @@ background : transparent url(img/list-on-orange.gif) no-repeat left center;
 background : transparent url(img/list-active.gif) no-repeat left center;
 color : #000;
 }
+
+            /*ACCOUNT PAGE*/
+.event-page{
+    padding-top: 10px;
+}
+
+
 			/*FOOTER*/
 .footer {
     position: absolute;

@@ -26,9 +26,10 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="nav navbar-nav">
-                <li><a href="/about.html">About Us</a></li>
-                <li><a href="/blogs">News</a></li>
-                <li><a href="/leagues.html">Leagues</a></li>
+                <!--fix faqs path-->
+                <li><%= link_to "About", faqs_path %></li>
+                <li><%= link_to "News", blogs_path %></li>
+                <li><%= link_to "Leagues", leagues_path %></li>
             </ul>
             
             <% if user_signed_in? %>

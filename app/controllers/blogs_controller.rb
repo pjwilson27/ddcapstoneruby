@@ -13,14 +13,14 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.create(blog_params)
+    @blog = Blog.new(blog_params)
     
-    if @blog.save
-      flash[:notice] = "Blog has been successfully uploaded!"
-      redirect_to @blog
-    else
-      flash[:error] = "There was a problem. Please try again later."
-      redirect_to home_index_path
+    respond_to do |f|
+      if @blog.save
+        f.html { redirect_to @blog, notice: "Blog created!" }
+      else
+        f.html { render action: 'new' }
+      end
     end
   end
 

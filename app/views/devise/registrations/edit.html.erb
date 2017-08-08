@@ -1,49 +1,210 @@
+<head>
+    <title>INSERT USER NAME account -- DD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--Fix navbar links to link_to-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a href="/home/index" class="navbar-brand"><img id="logo" src="./app/assets/images/DD-logo.jpg"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav">
+                <!--fix faqs path-->
+                <li><%= link_to "About", faqs_path %></li>
+                <li><%= link_to "News", blogs_path %></li>
+                <li><%= link_to "Leagues", leagues_path %></li>
+            </ul>
+            
+            <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "My Account", edit_user_registration_path, :class => 'fa fa-user' %></li>
+                <!--reconnect the destroy path-->
+                <li><%= link_to "Log Out", destroy_user_session_path, :class => 'fa fa-sign-out' %></li>
+            </ul>
+            <% else %>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/users/sign_up"><i class="fa fa-user-plus" aria-hidden="true">Signup</i></a></li>
+                <li><a href="/users/sign_in"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a></li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--Devise information-->
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-  
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-    <br />
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
+<form class="pure-form pure-form-aligned">
+  <fieldset>
+  <!--Maybe take out the username option...not 100% on the form requirements just this second-->
+  <!--Add options for the user to upload their own avatar-->
+      <div class="pure-control-group">
+              <%= f.label :username %><br />
+              <%= f.text_field :username %>
+              <span class="pure-form-message-inline">This is a required field.</span>
+      </div>
+      
+      <div class="pure-control-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+      </div>
+                
+      <div class="pure-control-group">
+        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+      
+      <div class="pure-control-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+                
+      
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+                
+      <!--<div class="pure-controls">-->
+      <!--    <label for="cb" class="pure-checkbox">-->
+      <!--        <input id="cb" type="checkbox"> I've read the terms and conditions-->
+      <!--    </label>-->
+                
+      <!--    <button type="submit" class="pure-button pure-button-primary">-->
+      <!--    </button>-->
+      </div>
+      
+      <div class="actions">
+        <%= f.submit "Update Information" %>
+      </div>
+      
+      <% end %>
+  </fieldset>
+</form> 
+ 
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
+    <!--Clean dis ish up-->
+    <div class="container">
+        <div class="row">
+            <div class="event-page">
+              <h2><u>Upcoming Drafts</u></h2>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <!--League Name to be a clickable link that brings up the rules and members of the league-->
+                      <th><abbr title="League Name">League</abbr></th>
+                      <th>Teams</th>
+                      <th><abbr title="Members">Drafting Day</abbr></th>
+                      <!--Grayed out until 30 mins before scheduled draft day-->
+                      <th><abbr title="Join">Join Draft</abbr></th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+                    <tr>
+                      <th><a href="#">America's League</a></th>
+                      <td>12</td>
+                      <td>September 1st, 2017 @ 3pm</td>
+                      <td>
+                          <div class="ui animated button" tabindex="0">
+                          <div class="visible content">Join Now!</div>
+                          <div class="hidden content">
+                          <i class="right arrow icon"></i>
+                      </div>
+                      </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th><a href="#">Dirty Drafters</a></th>
+                      <td>10</td>
+                      <td>September 4th, 2017 @ 12pm</td>
+                      <td> 
+                          <div class="ui animated button" tabindex="0">
+                          <div class="visible content">Join Now!</div>
+                          <div class="hidden content">
+                          <i class="right arrow icon"></i>
+                      </div>
+                      </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th><a href="#">New York League</a></th>
+                      <td>16</td>
+                      <td>August 19th, 2017 @ 6pm</td>
+                      <td>
+                          <div class="ui animated button" tabindex="0">
+                          <div class="visible content">Join Now!</div>
+                          <div class="hidden content">
+                          <i class="right arrow icon"></i>
+                      </div>
+                      </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th><a href="#">Football Fantatics</a></th>
+                      <td>14</td>
+                      <td>September 2nd, 2017 @ 9pm</td>
+                      <td>
+                          <div class="ui animated button" tabindex="0">
+                          <div class="visible content">Join Now</div>
+                              <div class="hidden content">
+                              <i class="right arrow icon"></i>
+                          </div>
+                          </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<!--------------------Footer------------------------------->    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><i class="fa fa-copyright" aria-hidden="true">Copyright Draft Dynasty Inc. 2017</i></h1>
+                    <p>123 Main Street, Columbus, Ohio 43054</p>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li><a href="#">Advertise</a></li>
+                    
+                    <div class="sponsors">
+                        <img src="/assets/cc.jpg">
+                        <img src="/assets/paypal.jpg">
+                        <img src="/assets/statsinc.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>    
+<!--------------------Scripts------------------------------->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://use.fontawesome.com/a6f8944a21.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>     
+</body>

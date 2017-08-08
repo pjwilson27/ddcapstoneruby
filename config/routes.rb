@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'home/index'
 
   devise_for :users
@@ -6,6 +7,10 @@ Rails.application.routes.draw do
   resources :blogs
   
   resources :users
+  
+  resources :leagues
+  
+  resources :faqs
   
   root to: 'home#index'
   

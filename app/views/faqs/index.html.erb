@@ -9,30 +9,40 @@
 </head>
 <body>
 <!--------------------Main Site Navigation------------------------------->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <a href="index.html" class="navbar-brand"><img src="/assets/DD-Logo.jpg"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-nav-demo">
-                <ul class="nav navbar-nav">
-                    <li><a href="/about.html">About Us</a></li>
-                    <li><a href="/news.html">News</a></li>
-                    <li><a href="/leagues.html">Leagues</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-user-plus" aria-hidden="true">Signup</i></a></li>
-                    <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a href="/home/index" class="navbar-brand"><img id="logo" src="./app/assets/images/DD-logo.jpg"></a>
         </div>
-    </nav>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav">
+                <li><%= link_to "About", faqs_index %></li>
+                <li><%= link_to "News", blogs_path %></li>
+                <li><%= link_to "Leagues", leagues_path %></li>
+            </ul>
+            
+            <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "My Account", edit_user_registration_path, :class => 'fa fa-user' %></li>
+                <!--reconnect the destroy path-->
+                <li><%= link_to "Log Out", destroy_user_session_path, :class => 'fa fa-sign-out' %></li>
+            </ul>
+            <% else %>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/users/sign_up"><i class="fa fa-user-plus" aria-hidden="true">Signup</i></a></li>
+                <li><a href="/users/sign_in"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a></li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
     
     <div class="container">
         <div class="row">

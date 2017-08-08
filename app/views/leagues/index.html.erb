@@ -1,12 +1,15 @@
-<head>
-    <title>Latest News -- DD</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+<title>Leagues</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="app/assets/stylesheets/main.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
 </head>
+
 <body>
-<!--------------------Main Site Navigation------------------------------->
+    <!--Fix navbar links to link_to-->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -41,19 +44,59 @@
         </div>
     </div>
 </nav>
-    
-<!--------------------News Feed Listings------------------------------->    
-    <div class="container">
-        <div class="row">
-            <div class="news-feed">
-                <strong><ul>All Blogs</ul></strong>
-                    <% @blogs.each do |b| %>
-                        <li><%= link_to b.title, b %></li>
-                    <% end %>
-            </div>
-        </div>
-    </div>    
-    
+
+<div id="gutter"></div>
+<div id="col1">
+<div class="scoreboard">
+    <table>
+        <thead>Around the League</thead>
+            <tr>
+                <td>New England: 3</td>
+                <td>Atlanta: 28</td>
+            </tr>
+                        
+            <tr>
+                <td>Oakland: 24</td>
+                <td>Tennessee: 37</td>
+            </tr>
+                        
+            <tr>
+                <td>Green Bay: 21</td>
+                <td>Detriot: 7</td>
+            </tr>
+    </table>
+</div>
+<div class="rankings">
+    <table>
+        <thead>Experts Top Three Overall</thead>
+        <tr>
+            <td>1)Bobby Boucher</td>
+        </tr>
+        <tr>
+            <td>2)OJ Simpson</td>
+        </tr>
+        <tr>
+             <td>3)Otherguy</td>
+        </tr>
+    </table>
+    </div>
+            <!---Scoreboard Code Here--->
+            <!--Design it as a table? Integrate API afterwards
+            Must have ability to sort by sport as well
+            this will be on the top left side of the page-->
+</div>
+<div id="col2">
+        <h1> MAIN CONTENT TO LOOP THROUGH ALL OF THE AVAILABLE LEAGUES</h1>
+</div>
+
+<div id="col3">
+    <div class="create-league">
+          <p>Interested in starting your own league?</p>
+          <a class="pure-button pure-button-primary" href="#">Get Started</a>
+    </div>
+</div>
+
+
 <footer class="footer">
     <div class="container">
         <div class="row">
