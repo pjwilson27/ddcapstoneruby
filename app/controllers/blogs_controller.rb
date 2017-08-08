@@ -13,14 +13,14 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = Blog.create(blog_params)
     
     if @blog.save
       flash[:notice] = "Blog has been successfully uploaded!"
       redirect_to @blog
     else
       flash[:error] = "There was a problem. Please try again later."
-      redirect_to
+      redirect_to home_index_path
     end
   end
 
@@ -32,6 +32,7 @@ class BlogsController < ApplicationController
   end
 
   def delete
+    @blog = Blog.find(params[:id])
   end
   
   private
