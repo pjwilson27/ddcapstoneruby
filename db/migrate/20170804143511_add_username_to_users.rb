@@ -2,7 +2,7 @@ class AddUsernameToUsers < ActiveRecord::Migration
   def change
     change_table :users do |t|
       
-      t.text :username
+      t.string :username
 
     end
   end
