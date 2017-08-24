@@ -1,2 +1,127 @@
-<h1>Leagues#new</h1>
-<p>Find me in app/views/leagues/new.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create A League</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+</head>
+<body>
+    
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a href="/home/index" class="navbar-brand"><img id="logo" src="./app/assets/images/DD-logo.jpg"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav">
+                <!--fix faqs path-->
+                <li><%= link_to "About", faqs_path %></li>
+                <li><%= link_to "News", blogs_path %></li>
+                <li><%= link_to "Leagues", leagues_path %></li>
+            </ul>
+            
+            <% if user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "My Account", edit_user_registration_path, :class => 'fa fa-user' %></li>
+                <!--reconnect the destroy path-->
+                <li><%= link_to "Log Out", destroy_user_session_path, :class => 'fa fa-sign-out' %></li>
+            </ul>
+            <% else %>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/users/sign_up"><i class="fa fa-user-plus" aria-hidden="true">Signup</i></a></li>
+                <li><a href="/users/sign_in"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a></li>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+    <div class="row">
+        <div class="input-field col s6">
+             <input value="Enter League Name" id="league_name" type="text" class="validate">
+             <label class="active" for="league_name">League Name</label>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <p id="keepers">Keepers?
+                <div class="switch">
+                    <label>
+                      No
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      Yes
+                    </label>
+                 </div>
+            </p>
+            
+    <div class="container">
+        <div class="row">
+            <p id="trade-pick">Trade draft picks?
+                <div class="switch">
+                    <label>
+                      No
+                      <input type="checkbox">
+                      <span class="lever"></span>
+                      Yes
+                    </label>
+                 </div>
+            </p>
+          
+             <!--Need to activate jQuery-->
+             <div class="input-field col s12">
+                <select>
+                  <option value="1">8</option>
+                  <option value="2">10</option>
+                  <option value="3">12</option>
+                  <option value="4">14</option>
+                  <option value="5">16</option>
+                </select>
+                <label>Number of Teams?</label>
+             </div>
+        </div>
+    </div>
+    
+    <button class="btn waves-effect waves-light" type="submit" name="action">
+        <i class="material-icons right">Create League</i>
+    </button>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1><i class="fa fa-copyright" aria-hidden="true">Copyright Draft Dynasty Inc. 2017</i></h1>
+                <p>123 Main Street, Columbus, Ohio 43054</p>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Contribute</a></li>
+                <li><a href="#">Advertise</a></li>
+                
+                <div class="sponsors">
+                    <img id="cc" src="./app/assets/images/cc.jpg">
+                    <img id="cc" src="./app/assets/images/paypal.jpg">
+                    <img id="cc" src="./app/assets/images/statsinc.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript" src="https://use.fontawesome.com/a6f8944a21.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

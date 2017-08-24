@@ -4,7 +4,6 @@ class Addleagueparams < ActiveRecord::Migration
     
     t.integer "teams"
     t.string "league_name"
-    t.boolean "trades"
     
     end
   end
