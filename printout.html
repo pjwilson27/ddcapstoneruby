@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>Draft Simulator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="language" content="English">
+<meta name="google" content="notranslate">
+<meta name="google-play-app" content="app-id=com.fantasypros.draftwizard.football">
+<link href='//fonts.googleapis.com/css?family=Raleway:100,200,400,600,700,800' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:200,400,600,700,800' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' style='text/css' href='//cdn.fantasypros.com/csw/bootstrap_2_3_2/css/bootstrap.min.css' />
+<link href='//cdn.fantasypros.com/csw/bootstrap_2_3_2/css/bootstrap-responsive.min.css' rel='stylesheet'>
+<script src='//cdn.fantasypros.com/csw/bootstrap_2_3_2/js/jquery-1.9.1.min.js'></script>
+<script src='//cdn.fantasypros.com/csw/bootstrap_2_3_2/js/bootstrap.min.js'></script>
+<link rel='stylesheet' style='text/css' href='http://cdn.fantasypros.com/js/smartbanner/jquery.smartbanner.css' media='screen'/>
+<script src="//cdn.fantasypros.com/js/smartbanner/jquery.smartbanner-android-layer.js"></script>
+<script type="text/javascript">
+if ( /(iPad).*AppleWebKit.*Mobile.*Safari/.test(navigator.userAgent) ) {
+} else {
+  var headNode = document.getElementsByTagName('head')[0];
+  var sbNode = document.createElement('meta');
+  sbNode.name = 'apple-itunes-app';
+  sbNode.content = 'app-id=1132708558, affiliate-data=1l3votR';
+  headNode.appendChild(sbNode);
+}
+  $(function() { $.smartbanner({title:'Draft Wizard',author:'FantasyPros',price: 'FREE',icon:'http://cdn.fantasypros.com/csw/images/DW_mobile_football.png',daysHidden:3,daysReminder:7,iOSUniversalApp:false}) } );
+</script>
+<link type='text/css' href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css' rel='stylesheet'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js'></script>
+<link rel='stylesheet' style='text/css' href='/stylesheets/styles_jmo.css?m8' />
+<link rel='stylesheet' style='text/css' href='/stylesheets/styles_new.css?q2' />
+<!-- Start Visual Website Optimizer Asynchronous Code -->
+<script type='text/javascript'>
+var _vwo_code=(function(){
+var account_id=300186,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+</script>
+<!-- End Visual Website Optimizer Asynchronous Code -->
+<script type='text/javascript'>
+   var $mcGoal = {'settings':{'uuid':'7dd27cdab984a8a2867612eb1','dc':'us2'}};
+   (function() {
+        var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+       sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+   })(); 
+</script>
+<script type='text/javascript'>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-17511397-1', 'auto');
+  ga('create', 'UA-31328865-1', 'auto', 'DWTracker');
+  ga('create', 'UA-17511397-12', 'fantasypros.com', 'fp2');
+  ga('require', 'linkid'); // Allow for enhanced link attribution
+  ga('send', 'pageview');
+  ga('DWTracker.send', 'pageview');
+  ga('fp2.send', 'pageview');
+</script>
+<script src="//cdn.fantasypros.com/js/fp_mega_dropdown_async.js?2"></script>
+</head>
+<body class='body-sticky' ng-app='draftApp'>
+<div class='body-wrap' ng-controller='DraftRoomCtrl as draftroom'>
+<div id='nav-top'>    <nav class='container'>        <div class='mobile-menu dropdown-wrap'>          <a href='#'><i class='fa fa-bars'></i></a>          <div class='fp-dropdown-menu'>    <a href='/football/leagues/'>My Leagues</a>        <a href='/football/mock-draft-simulator/'>Draft Simulator</a>        <a href='/football/draft-assistant/'>Draft Assistant</a>        <a href='/football/cheat-sheets/'>Cheat Sheet Creator</a>        <a href='/football/draft-analyzer/'>Draft Analyzer</a>    <a href='/football/auction-draft-simulator/'>Auction Simulator</a>    <a href='/editor/createFromProjections.jsp?auction=Y&sport=nfl'>Auction Calculator</a>        <a href='/football/faq/'>Help</a>        <a href='/logout?'>Log Out</a>          </div>        </div>        <div class='brand'>        <a href='https://www.fantasypros.com/'><img src='//images.fantasypros.com/images/logos/300x60_r.png' alt='FantasyPros.com'></a>        </div>
+<div class='top-link sport-link top-sport-nfl'><a href='https://www.fantasypros.com/nfl/'>NFL</a><i class='caret'></i></div><div class='top-link sport-link top-sport-mlb'><a href='https://www.fantasypros.com/mlb/'>MLB</a><i class='caret'></i></div><div class='top-link sport-link top-sport-nba'><a href='https://www.fantasypros.com/nba/'>NBA</a><i class='caret'></i></div><div class='top-link sport-link top-sport-nhl'><a href='https://www.fantasypros.com/nhl/'>NHL</a><i class='caret'></i></div><div class='top-link sport-link top-sport-dfs'><a href='https://www.fantasypros.com/daily-fantasy/'>DFS</a><i class='caret'></i></div><div class='pull-right nav-end'>  <div class='top-link mega-dropdown-wrap dropdown-wrap product-link active-menu' style='min-width: 126px;width:auto;'>    <a href='/'>Draft Wizard</a><i class='caret'></i>    <ul class='mega-dropdown fp-dropdown-menu' style='left:0'>      <li>        <ul><li><a href='/football/'>NFL</a></li><li><a href='/football/'>Home</a></li><li><a href='/football/mock-draft-simulator/'>Draft Simulator</a></li><li><a href='/football/draft-assistant/'>Draft Assistant</a></li><li><a href='/football/cheat-sheets/'>Cheat Sheet Creator</a></li><li><a href='/football/draft-analyzer/'>Draft Analyzer</a></li><li><a href='/football/auction-draft-simulator/'>Auction Simulator</a></li><li><a href='/football/auction-calculator/'>Auction Calculator</a></li></ul></li><li><ul><li><a href='/baseball/'>MLB</a></li><li><a href='/baseball/'>Home</a></li><li><a href='/baseball/mock-draft-simulator/'>Draft Simulator</a></li><li><a href='/baseball/draft-assistant/'>Draft Assistant</a></li><li><a href='/baseball/cheat-sheets/'>Cheat Sheet Creator</a></li><li><a href='/baseball/draft-analyzer/'>Draft Analyzer</a></li><li><a href='/baseball/auction-draft-simulator/'>Auction Simulator</a></li><li><a href='/baseball/auction-calculator/'>Auction Calculator</a></li></ul></li><li><ul><li><a href='/basketball/'>NBA</a></li><li><a href='/basketball/'>Home</a></li><li><a href='/basketball/mock-draft-simulator/'>Draft Simulator</a></li><li><a href='/basketball/draft-assistant/'>Draft Assistant</a></li><li><a href='/basketball/cheat-sheets/'>Cheat Sheet Creator</a></li><li><a href='/basketball/draft-analyzer/'>Draft Analyzer</a></li></ul></li>      </ul></div><div class='top-link mega-dropdown-wrap dropdown-wrap product-link' style='min-width: 127px;width:auto;'>    <a href='https://www.fantasypros.com/nfl/myplaybook/'>My Playbook</a><i class='caret'></i>    <ul class='mega-dropdown fp-dropdown-menu' style='left:0'>      <li>        <ul><li><a href='https://www.fantasypros.com/nfl/myplaybook/'>NFL</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/'>Dashboard</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/multi-league.php'>Multi-League Assistant</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/start-sit-assistant.php'>Start / Sit Assistant</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/waiver-wire-assistant.php'>Waiver Assistant</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/trade-analyzer.php'>Trade Analyzer</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/trade-finder.php'>Trade Finder</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/league-analyzer.php'>League Analyzer</a></li><li><a href='https://www.fantasypros.com/nfl/myplaybook/research-assistant-setup.php'>Research Assistant</a></li></ul></li><li><ul><li><a href='https://www.fantasypros.com/mlb/myplaybook/'>MLB</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/'>Dashboard</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/lineup-assistant.php'>Lineup Assistant</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/waiver-wire-assistant.php'>Waiver Assistant</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/trade-analyzer.php'>Trade Analyzer</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/trade-finder.php'>Trade Finder</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/league-analyzer.php'>League Analyzer</a></li><li><a href='https://www.fantasypros.com/mlb/myplaybook/research-assistant-setup.php'>Research Assistant</a></li></ul></li><li><ul><li><a href='https://www.fantasypros.com/nba/myplaybook/'>NBA</a></li><li><a href='https://www.fantasypros.com/nba/myplaybook/'>Dashboard</a></li><li><a href='https://www.fantasypros.com/nba/myplaybook/multi-league.php'>Multi-League Assistant</a></li><li><a href='https://www.fantasypros.com/nba/myplaybook/research-assistant-setup.php'>Research Assistant</a></li><li><a href='https://www.fantasypros.com/nba/myplaybook/edit.php'>Manage my teams</a></li><li><a href='https://www.fantasypros.com/nba/myplaybook/edit.php?modal=import'>Add another team</a></li></ul>      </li>    </ul></div><div class='top-link mega-dropdown-wrap dropdown-wrap product-link' style='min-width: 104px;width:auto;'>    <a href='https://www.fantasypros.com/daily-fantasy/tools.php'>DFS Tools</a><i class='caret'></i>    <ul class='mega-dropdown fp-dropdown-menu' style='left:0'>      <li>        <ul>            <li><a href='https://www.fantasypros.com/daily-fantasy/tools.php'>MLB</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/mlb/fanduel-lineup-builder.php'>Lineup Builder</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/mlb/fanduel-lineup-optimizer.php'>Lineup Optimizer</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/mlb/fanduel-lineup-optimizer.php#lineups'>Saved Lineups</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/mlb/fanduel-cheatsheet.php'>Cheat Sheets</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/mlb/fanduel-undervalued-players.php'>Value Plays</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/performance-history.php'>Performance History</a></li>            <li><a href='https://www.fantasypros.com/daily-fantasy/mlb/fanduel-salary-changes.php'>Salary Changes</a></li>            <li><a href='https://www.fantasypros.com/mlb/lineups/'>Daily Lineups</a></li>        </ul>      </li>    </ul></div>  <div class='top-link top-search'>     <a href='https://www.fantasypros.com/nfl/players/'><i class='fa fa-search'></i></a>  </div><div class='top-link user-menu dropdown-wrap' style='min-width:70px'>  <div class='user-menu-label'>                <div class='pull-left username'><span>xxspitfire27</span></div> <i class='fa fa-angle-down u-pull-left'></i>            </div>    <i class='caret'></i>            <div class='user-dropdown fp-dropdown-menu'>                <a href='/football/leagues/'>My Leagues</a>                <a href='https://secure.fantasypros.com/accounts/profile/'>My Account</a>                <a href='/premium/'>Upgrades</a>                <a href='/football/faq/'>Help</a>                <a href='/logout?'>Log Out</a>            </div>        </div>
+<div class='top-link upgrade-link' style='min-width: 98px;'>    <a href='https://www.fantasypros.com/premium/'><span border-left: style='font-weight: bold;padding-left:10px;border-left:solid 1px rgba(255,255,255,.2);'>Premium</span></a>    <i class='caret'></i></div>        </div>    </nav></div><script type='text/javascript' src='//cdn.fantasypros.com/csw/jquery-ui-1.11.4/jquery-ui.min.js'></script>
+<link href='//cdn.fantasypros.com/csw/jquery-ui-1.11.4/jquery-ui.min.css' rel='stylesheet'>
+<script type='text/javascript' src='//cdn.fantasypros.com/csw/jquery-ui/js/jquery.sticky.js'></script>
+<script src='//cdn.fantasypros.com/js/jquery.ui.touch-punch.min.js?ver=0.2.2'></script>
+
+<script>
+	window.pageConfig = {
+		childApp: '',
+		comparePlayerChildApp: '',
+		preventIDC: false,
+		url: '/spaDraft',
+		sport:'nfl',
+		scheduledDraft:'c5IUzeBKcXDghYZQYA4Ku_LXu21Icu7_bIU4ucF6DVE-BYNHsYjjroaIrjy3yMVSSbx9Gy9XQGveoEE7d2_JOXSDi4WiY361',
+		
+		positions:'QB,RB,RB,WR,WR,WR,TE,WR/RB/TE,K,DL,LB,DB,BN,BN,BN,BN,BN,BN,BN,BN',
+		userPos:5,
+		
+		teamCount:12,
+		cheatsheetKeys:"ECR",    	
+		scoringSystem:'CUSTOM',   	
+		rookiesOnly:false,
+		eligibilityRule:1,
+		universe:0,
+		userStats: "26,27,28,30,32,5,2,10,12,13",
+		draftAgainst: "experts,sk7X2o7PTfaR79K-_PxSD97QyMjw8ghKW6QkkLFtAilLoYhQxrZ45YeD38rtR_IsL_PPbUFaAi7JlbGeGYZKSg~~,sk7X2o7PTfaR79K-_PxSD59osMfVZxWXbfvkJkaoimk7xPDHpSXwCLTMxFpXZ9xQboAK0KQ4mPKGbE8TvHb5gA~~,sk7X2o7PTfaR79K-_PxSD77qyE3GuyM7fNuooKpy0EkWZ5u2XI8GhaCkS_rVfiPWHOwaFU-1EteQjM6cnZ94nQ~~,sk7X2o7PTfaR79K-_PxSDy03xVNTgZKJIPF0Mpz2elhBc83Wa9NOAEhyaSQ0hpJZbt8DjRy_dwdh4pJKU5DAAg~~,vhksHwPSExVyPsYUROPNnhdYmeBBx0P2SIFKWQ54sHO3DmdiPCjqkfmmEfyFjZPv4tbjkUqMhw0w59LWqAAsFA~~",
+		isAssistant: false,
+		isManualAssistant: false,
+		hasIDP: true,
+		isAuction: false,
+		isPreview: false,
+		isProUser: true,
+		isMVP: true,
+		isHOF: false,
+		isLoggedOut: false,
+		bypassDirectoryDrafts:false,
+		bypassRegistrationFence:false,
+		fm: 0,
+		force: "hybridthe0ry00@gmail.com",
+		isIframeMock: false,
+		
+		partner: "",
+		isMFL10: false,
+		offerCoPilot: false,
+		
+		googleEventLabel: "IDP"
+		
+			,initialAction: "startMock"
+		
+		
+		
+		
+		
+		
+	}
+	window.alertMap = {
+	13893:{tag:"S",details:"Suspended indefinitely after another failed drug test"},10645:{tag:"S",details:"Suspended first 3 games of the season"},9854:{tag:"INJ",details:"Likely out for season due to heart condition"},13896:{tag:"INJ",details:"Doubtful for Week 1 with torn ligament in wrist"},11726:{tag:"INJ",details:"Doubtful for start of season while recovering from knee surgery"},11440:{tag:"S",details:"Suspended indefinitely"},11709:{tag:"INJ",details:"Placed on the active PUP list, could be ready for Week 1"},15853:{tag:"S",details:"Suspended first game of the season"},14526:{tag:"INJ",details:"Out indefinitely with neck issue, placed on reserve/PUP list"},11841:{tag:"S",details:"Suspended first 4 games of the season"},12070:{tag:"INJ",details:"Doubtful for start of season while recovering from ACL surgery"},9870:{tag:"S",details:"Suspended indefinitely"},15629:{tag:"INJ",details:"Sustained broken collarbone during training camp. Timetable for return is between Weeks 5 - 8 in the season."},12228:{tag:"S",details:"Suspended first 7 games of the season"},11703:{tag:"S",details:"Suspended first 2 games of the season"},14029:{tag:"S",details:"Suspended first 10 games of the season"},12136:{tag:"S",details:"Has not officially be reinstated from suspension, but it is expected to happen before the season starts"},12772:{tag:"INJ",details:"Out indefinitely after setback with surgically repaired knee"},16377:{tag:"INJ",details:"Questionable for start of season with lingering back issues"},15914:{tag:"S",details:"Suspended first 4 games of the season"},16552:{tag:"INJ",details:"Out indefinitely with fractured kneecap. Mid-season return possible"},12145:{tag:"S",details:"Suspended first 2 games of the season"},11198:{tag:"S",details:"Suspended first 4 games of the season"},11768:{tag:"S",details:"Suspended first 8 games of the season"},14274:{tag:"S",details:"Suspended first 4 games of the season"},15498:{tag:"S",details:"Suspended first 6 games of the season"},10322:{tag:"S",details:"Suspended first game of the season"},12088:{tag:"INJ",details:"Doubtful for start of season while recovering form knee surgery"},12192:{tag:"INJ",details:"Out indefinitely with knee injury"},12157:{tag:"S",details:"Suspended first 4 games of the season"},12291:{tag:"S",details:"Suspended first 4 games of the season"},16432:{tag:"INJ",details:"Out indefinitely with knee injury"},15569:{tag:"INJ",details:"Questionable for Week 1 with low ankle sprain"},11174:{tag:"INJ",details:"Suffered hyperextension of knee, team is awaiting further tests before decision on possible surgery"},11821:{tag:"INJ",details:"Dealing with ankle injury, placed on active PUP list, could be ready for Week 1"},12352:{tag:"INJ",details:"Questionable for Week 1 after arthroscopic knee surgery"},16456:{tag:"INJ",details:"Questionable to start the season while recovering from knee surgery"},16391:{tag:"INJ",details:"Out indefinitely with concussion and facial injuries after ATV accident"},11186:{tag:"S",details:"Suspended first 3 games of the season"},15612:{tag:"S",details:"Suspended first 4 games of the season"}
+
+	};
+	window.podcastMap = {
+	11692:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=40:41"},12090:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=1:02:19"},10007:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=19:54"},13979:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=46:34"},9280:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=4:22"},9154:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=15:21"},12129:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=38:52"},16428:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=48:08"},11606:{link:"https://soundcloud.com/fantasypros-football-podcast/projections-w-ross-tucker-round-3-4-strategy-ep-101#t=33:12"},9258:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=43:52"},13906:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=14:16"},15555:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=54:55"},13981:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=26:06"},13939:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=23:16"},9963:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=1:03:31"},11594:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=37:48"},15514:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=36:19"},16374:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=43:17"},16381:{link:"https://soundcloud.com/fantasypros-football-podcast/fact-or-fiction-draft-mistakes-to-avoid-ep-104#t=42:08"},11177:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=46:29"},15498:{link:"https://soundcloud.com/fantasypros-football-podcast/ezekiel-elliott-suspended-watkins-matthews-trades-ep-109#t=22:30"},9510:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=24:00"},12102:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=5:14"},12092:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=44:11"},12338:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=48:18"},16423:{link:"https://soundcloud.com/fantasypros-football-podcast/fact-or-fiction-draft-mistakes-to-avoid-ep-104#t=17:07"},13924:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=9:11"},9078:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=27:46"},12124:{link:"https://soundcloud.com/fantasypros-football-podcast/ezekiel-elliott-suspended-watkins-matthews-trades-ep-109#t=12:11"},9289:{link:"https://soundcloud.com/fantasypros-football-podcast/undervalued-players-listener-mailbag-ep-99#t=22:21"},12120:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=51:23"},15561:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=16:21"},13894:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=31:35"},11896:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=39:41"},9027:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=48:47"},9428:{link:"https://soundcloud.com/fantasypros-football-podcast/projections-w-ross-tucker-round-3-4-strategy-ep-101#t=27:19"},9001:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=13:49"},11657:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=2:41"},11616:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=11:17"},13891:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=54:36"},11215:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=10:11"},15597:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=31:35"},14403:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=19:39"},9681:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=24:50"},15511:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=18:50"},11220:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=44:11"},16424:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=35:45"},16154:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=58:26"},16607:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=44:49"},9635:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=51:27"},9966:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=47:11"},13899:{link:"https://soundcloud.com/fantasypros-football-podcast/fact-or-fiction-draft-mistakes-to-avoid-ep-104#t=48:19"},12122:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=30:04"},9509:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=59:52"},13470:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=47:49"},11180:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=35:11"},11699:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=51:53"},11199:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=49:07"},9603:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=32:49"},9717:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=59:54"},11638:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=34:53"},9691:{link:"https://soundcloud.com/fantasypros-football-podcast/projections-w-ross-tucker-round-3-4-strategy-ep-101#t=34:34"},16393:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=2:50"},9708:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=33:33"},13903:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=43:35"},16488:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=7:53"},15600:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=28:08"},9213:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=22:54"},9353:{link:"https://soundcloud.com/fantasypros-football-podcast/fact-or-fiction-draft-mistakes-to-avoid-ep-104#t=15:10"},11644:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=38:23"},16421:{link:"https://soundcloud.com/fantasypros-football-podcast/ppr-mock-draft-ep-103#t=16:30"},9383:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=23:45"},11185:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=45:46"},11347:{link:"https://soundcloud.com/fantasypros-football-podcast/ezekiel-elliott-suspended-watkins-matthews-trades-ep-109#t=25:49"},9894:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=1:01:10"},9869:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=13:34"},16431:{link:"https://soundcloud.com/fantasypros-football-podcast/undervalued-players-listener-mailbag-ep-99#t=54:16"},9712:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=18:00"},11625:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=28:40"},16385:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=22:30"},16422:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=53:29"},12996:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=51:11"},13977:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=18:35"},13915:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=12:31"},12128:{link:"https://soundcloud.com/fantasypros-football-podcast/fact-or-fiction-draft-mistakes-to-avoid-ep-104#t=19:45"},12143:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=34:47"},9588:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=28:28"},9148:{link:"https://soundcloud.com/fantasypros-football-podcast/risky-players-to-draft-avoid-with-matt-camp-ep-105#t=26:12"},11081:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=46:34"},15581:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=33:55"},12904:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=43:00"},12118:{link:"https://soundcloud.com/fantasypros-football-podcast/ezekiel-elliott-suspended-watkins-matthews-trades-ep-109#t=2:37"},11636:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=10:39"},15802:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=9:22"},15551:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=49:47"},14151:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=48:18"},15614:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=20:33"},12145:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=49:20"},11172:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=6:06"},12136:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=20:56"},16398:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=4:56"},9006:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=31:31"},10092:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=18:50"},9039:{link:"https://soundcloud.com/fantasypros-football-podcast/toughest-players-to-project-w-christopher-harris-ep-111#t=29:18"},9020:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=15:46"},11689:{link:"https://soundcloud.com/fantasypros-football-podcast/ezekiel-elliott-suspended-watkins-matthews-trades-ep-109#t=14:03"},9451:{link:"https://soundcloud.com/fantasypros-football-podcast/dave-richards-rankings-vs-expert-consensus-ep-102#t=56:44"},9907:{link:"https://soundcloud.com/fantasypros-football-podcast/undervalued-players-listener-mailbag-ep-99#t=37:11"},16425:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=1:05:25"},13912:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=31:30"},9699:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=37:30"},11186:{link:"https://soundcloud.com/fantasypros-football-podcast/consensus-rankings-debate-w-jake-ciely-ep-106#t=39:31"},16673:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=21:13"},12105:{link:"https://soundcloud.com/fantasypros-football-podcast/projections-w-ross-tucker-round-3-4-strategy-ep-101#t=47:09"},12104:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=1:01:10"},16420:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=8:45"},13890:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=8:57"},14324:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-wrs-with-john-paulsen-ep-108#t=29:43"},9437:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=53:44"},9064:{link:"https://soundcloud.com/fantasypros-football-podcast/player-showdowns-training-camp-battles-jj-zachariason-ep-100#t=26:38"},11690:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=2:01"},14352:{link:"https://soundcloud.com/fantasypros-football-podcast/bold-predictions-w-brad-evans-ep-110#t=26:23"},9749:{link:"https://soundcloud.com/fantasypros-football-podcast/high-upside-running-backs-ep-107#t=13:00"}
+
+		};
+</script>
+
+<script type='text/javascript' src='//cdn.fantasypros.com/files/playersArray.jsp?varName=window.PLAYER_DATA&sport=nfl'></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel='stylesheet' style='text/css' href='//cdn.fantasypros.com/csw/jquery.scrollbar/jquery.scrollbar.css' />
+<script type="text/javascript" src="//cdn.fantasypros.com/csw/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+<script src='/scripts/draftroom.js?1'></script>
+<script type='text/javascript' src='https://w.soundcloud.com/player/api.js'></script>
+<script src='/scripts/fp_podcast.js?9'></script>
+<script src='/scripts/controllers.js?d'></script>
+<link rel='stylesheet' style='text/css' href='/stylesheets/draftroom.css?f8' />
+
+
+
+<style>
+
+.spinner {
+  margin: 10px auto 30px;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+.InfoMessage{
+	top: 94px;
+}
+
+@media (max-width: 730px){
+	.InfoMessage{
+		top: 64px;
+	}
+}
+.ErrorMessage a{
+	color:white;
+	text-decoration:underline;
+}
+.ErrorMessage a:hover{
+	text-decoration:none;
+}
+.YourTeamModule{
+    max-height: 355px; 
+}
+
+@media (min-width: 900px){
+  	 .side-content {
+        top: 750px;
+  	 }
+}
+@media (min-width: 1200px) {
+  	 .side-content {
+        top: 0;
+  	 }
+}
+
+.popover {
+    font-size: 13px;
+    line-height: 18px;
+    min-width:500px;
+}
+
+
+.CheatSheetSummary {
+    max-width: 220px;
+}
+
+</style>
+
+<script>
+
+var availablePlayers = undefined;
+
+$(document).ready(function(){ 
+	$('.scrollbar-outer').scrollbar();
+
+});
+	
+</script>
+
+<div class="loading-backdrop"></div>
+<div class="loading-message">
+	<img class="fp-logo" src="//images.fantasypros.com/images/logos/300x60_r.png" alt="FantasyPros.com">
+	
+	Your draft is loading...
+	
+	<div class="spinner">
+	  <div class="bounce1"></div>
+	  <div class="bounce2"></div>
+	  <div class="bounce3"></div>
+	</div>
+	
+	
+		<div >
+			<a href="/simulator/issues.jsp?gel=IDP&sol=%2Fsimulator%2Fstart.jsp%3FstartOver%3DY%26sport%3Dnfl%26teamCount%3D12%26userPos%3D5%26scoring%3DCUSTOM%26draftKey%3Dc5IUzeBKcXDghYZQYA4Ku_LXu21Icu7_bIU4ucF6DVE-BYNHsYjjroaIrjy3yMVSSbx9Gy9XQGveoEE7d2_JOXSDi4WiY361" 
+				target="_blank">Having issues? Click Here &raquo;</a>	
+		</div>
+	
+</div>
+
+<div id="topMessage" class="InfoMessage"></div>
+<div id="errorMessage" class="InfoMessage ErrorMessage"></div>
+
+<div class="container">
+  <div class="clearfix main-content-wrap" id="draftroom">
+   <div class='main-content' ng-hide="DraftState.syncFailed"
+   			style="{{draftRoomView.isQueue || draftRoomView.isCheatSheet ? 'margin:0;min-height:0' : ''}}">
+    <div class="inner" style="{{draftRoomView.isQueue || draftRoomView.isCheatSheet ? 'margin:0' : ''}}">
+    
+  
+    <div class="DraftRoomTitle">
+		<h1>Mock Draft
+				
+		</h1>	
+				  	
+		
+		
+			
+			<a class="PerformanceLink"
+				 data-toggle="modal" href="#perfModal">Performance<br/>Issues?</a>
+				
+			<div class="modal" id="perfModal" style="display:none;width:460px">
+			  <div class="modal-header">
+			    <h3>Performance Issues?</h3>
+			  </div>
+			  <div class="modal-body" style="font-size:14px;font-weight:normal;line-height:18px;">
+			  <p>
+				1. Some users have reported that the new simulator is slow or crashes on older devices or older browsers. 
+				If you are experiencing similar issues, please 
+				<a  onclick="ga('DWTracker.send','event','Performance Issues','Launch Old Simulator','IDP');"
+					href="/simulator/start-os.jsp?startOver=Y&sport=nfl&teamCount=12&userPos=5&scoring=CUSTOM&draftKey=c5IUzeBKcXDghYZQYA4Ku_LXu21Icu7_bIU4ucF6DVE-BYNHsYjjroaIrjy3yMVSSbx9Gy9XQGveoEE7d2_JOXSDi4WiY361&perf=Y">try using the old simulator</a>.
+				</p><p>
+				2. If the old simulator does not perform better, please email us at <a href="mailto:draftwizard@fantasypros.com">draftwizard@fantasypros.com</a> 
+				and mention the browser and the operating system you are using.
+				</p>
+			  </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn"  data-dismiss="modal">OK</button>
+		      </div>
+			</div>
+			
+			
+				
+				<button class="btn btn-small btn-secondary DraftingModule" type="button" ng-click="autoPick()" 
+					onclick="ga('send','event','Mock Draft','Auto Pick','IDP');ga('DWTracker.send','event','Mock Draft','Auto Pick','IDP');"
+					ng-hide="DraftState.isCompleted">Auto Draft</button>
+				<a class="btn btn-small" href="/simulator/start.jsp?startOver=Y&sport=nfl&teamCount=12&userPos=5&scoring=CUSTOM&draftKey=c5IUzeBKcXDghYZQYA4Ku_LXu21Icu7_bIU4ucF6DVE-BYNHsYjjroaIrjy3yMVSSbx9Gy9XQGveoEE7d2_JOXSDi4WiY361"
+					onclick="ga('send','event','Mock Draft','Start Over','IDP');ga('DWTracker.send','event','Mock Draft','Start Over','IDP');">Start Over</a>	
+				<button class="btn btn-small btn-primary" type="button" ng-click="analyzeDraft($event)" 
+					style="width: 110px;" ng-show="DraftState.isCompleted && DraftState.directoryDraftId">Analyze Draft</button>
+				<button class="btn btn-small" type="button" ng-click="revertPick()" 
+					onclick="ga('send','event','Mock Draft','Revert Pick','IDP');ga('DWTracker.send','event','Mock Draft','Revert Pick','IDP');"
+					ng-show="DraftState.userPicks.length > 0">
+						Revert Pick
+			</button>
+			
+			
+			
+		
+		<div style="clear:both"></div>
+	</div>
+	
+			  			  
+	
+				
+		<div class="DraftLayoutTd QueueContainer"  
+			ng-show="!DraftState.isCompleted && (draftRoomView.isFull || draftRoomView.isQueue)">
+						  
+		 
+		 				
+			  <div class='LoadingModule PlayerDetails' style='display:none'>
+			  	<img src='//cdn.fantasypros.com/csw/images/loading-big.gif'/>
+			  </div>
+			  
+			  <div class="DraftingModule ">
+				
+				<div class="DraftingModuleTop">
+				  <div class="DraftingModuleContainer">
+			
+					<span class="QueueLabel">View</span>
+					
+	   	    		<span class="select-wrap">
+					  <select id="cheatSheetOption" ng-model="queueFilter" ng-change="refillQueue()">
+						<option value="Suggestions" selected="selected">Suggested players to consider</option>
+						<option value="TopEach">Top player from each position</option>
+						<option ng-repeat="r in rankingsArray" value="{{r.key}}">{{r.position == 'Overall' ? ('Overall Rankings') : (r.position + ' Only')}}</option>
+					
+					  </select>
+					</span>
+			
+	   	    		<span class="select-wrap">
+					  <select id="comparisonOption" ng-model="queueComparison" ng-change="checkQueueComparison()">	
+						<option value="Expert" selected="selected">Expert Voting %</option>
+						
+					  
+						<option value="Value">Value Based Drafting (VBD)</option>
+					  
+					  
+						<option value="SOS">Strength of Schedule (SOS)</option>
+						<option value="Notes">Player Notes</option>
+						<option value="ProjTot">2017 Projections</option>
+						<option value="StatTot">2016 Statistics</option>
+					<!-- 
+						<option value="ProjAvg">2017 Projections (Avg)</option>
+						<option value="ProjAvg">2016 Statistics (Avg)</option>
+					 -->
+						<option value="Summary" selected="selected">Summary View</option>
+					  
+								
+					  </select>
+					</span>	
+
+					<div id="idSearchForm">
+					  <label class="search">
+						<input id='idSearchBox' class='DefaultMessage' value='Player Search' msg='Player Search'>
+					  </label>
+					</div>
+					
+				  </div>
+				  <div style="clear:both"></div>
+				</div>
+				
+				<div class="DraftingModuleContainer">				
+				  <div id="comparisonPanel" class="ComparisonPanel">
+					<div class="PlayerDetails">
+						  <div ng-repeat="p in queuedPlayers" ng-init="player = DraftState.playerMap[p.id]"
+						  	class="SinglePlayerDetails" id="singlePlayerDetails{{player.id}}">
+								
+								<a href="{{p.link ? p.link : '#'}}" target="{{p.link ? '_blank' : '_self'}}" title="{{p.link ? 'Click here to open player page' : ''}}">
+									<img ng-src="{{player.image | thumbnail_square | check_missing_image}}" class="HeadShot">
+								</a>
+								
+								<div class="SinglePlayerDetailsTopPadding"></div>
+								
+								<div class="PlayerDesc">
+									<span class="PlayerName">
+				  					  {{player.name.length < 18 ? player.name : 
+				  					  		player.position == 'DST' ? player.first_name :
+				  					  			player.first_name[0] + '. ' + player.last_name | capitalize}}
+				  					</span>
+									<span data-trigger="click" data-html="true" ng-if="player.note" data-container="body"
+										data-content="<div style='popover-note'><a href='javascript:void(0)' onclick='closePopover(this)' style='float:right;margin-left:20px;'><img src='//cdn.fantasypros.com/csw/images/delete_grey.png'></a>{{player.note}}</div>" 
+										class="PlayerPopOver" data-original-title="" title="">
+										<img src="//cdn.fantasypros.com/csw/images/note-icon@2x.png" onclick='closeOtherPopovers(this)'>
+									</span>
+							
+									<span class="QueuePlayerAlert PlayerPopOver"  data-trigger="hover click"  data-container="body"
+										ng-if="DraftState.alertMap[p.id]"
+										data-content="{{DraftState.alertMap[p.id].details}}" 
+										data-original-title="" title="">
+										{{DraftState.alertMap[p.id].tag}}
+									</span>
+									
+								
+									<a ng-if="DraftState.podcastMap[p.id]" 
+									  	href="javascript:void(0)"
+										ng-click="onPodcastClick(player,DraftState.podcastMap[p.id].link)" 
+										title="Listen to podcast" class="fpIcon fpPodcastIcon"></a>
+				                   
+									
+				  					<div class="PlayerTags">
+										<span>
+											{{ player.eligibility }} 
+											- {{ player.team }}
+										
+											<span ng-hide="(p.bye == 0 || p.byeWeekAlert)"
+												class="label-bye" title="Bye Week">
+												- BYE {{p.bye}}
+											</span>		
+								  		
+										</span>
+											
+										
+										  <span ng-show="p.bye > 0 && p.byeWeekAlert">
+											<span class="label-bye Reach PlayerPopOver" data-container="body"
+												data-trigger="hover click" data-content="{{p.byeWeekAlert}}" title="Bye Week Alert">
+												BYE {{p.bye}}
+											</span>	
+										  </span>	
+										  <span ng-if="DraftState.handcuffs[player.id]">
+								  			<span class="label label-cuff PlayerPopOver" data-trigger="hover click" data-container="body"
+								  				data-content="{{player.name}} is the RB handcuff for {{DraftState.handcuffs[player.id]}} who is already on your team" 
+								  				>CUFF</span>
+										  </span>
+								  			
+									  <span ng-if="player.tag">
+										<span class="label PlayerPopOver Player{{player.tag}}"  data-container="body"
+				 							data-trigger="hover click" data-content="{{player.name}} is tagged as {{player.tag | uppercase}}">
+					  					  {{ player.tag | uppercase }}
+					  					</span>
+									  </span>
+									  <span ng-if="draftroom.playerIsInUserTeam(player)">
+										<span class="label PlayerPopOver UserTeamCell" data-container="body"
+				 							data-trigger="hover click" data-content="{{player.name}} is on your team">
+					  					  ON YOUR TEAM
+					  					</span>
+									  </span>
+							  		</div>
+								</div>
+								
+								<div ng-show="queueComparison == 'Summary'"  class='QueuePlayerData QueuePlayerSummary'>
+								
+									<div ng-show="!p.isIDP && p.ecr"
+										class="QueuePlayerColumn QueuePlayerTight" title="{{DraftState.hasECR ? 'Expert Consensus Rankings' : 'Overall Rank' }}">
+										<div class="ColumnLabel">{{DraftState.hasECR ? 'ECR' : 'RANK'}}</div>{{p.ecr}}
+									</div>
+									<div ng-hide="p.isIDP || p.ecr" 
+										class='QueuePlayerColumn QueuePlayerTight PlayerPopOver Reach' data-trigger='hover click'  data-container="body"
+										data-content="{{player.name}} does not appear in the Overall {{DraftState.hasECR ? 'Expert Consensus Rankings' : 'Rankings' }}."
+											 title="{{DraftState.hasECR ? 'Expert Consensus Rankings' : 'Overall Rank'}}">
+										<div class="ColumnLabel">{{DraftState.hasECR ? 'ECR' : 'RANK'}}</div>NR
+									</div>
+									
+									<div ng-show="!p.isIDP && p.adp > 0 && p.adp - DraftState.takenPlayerCount > 2 * DraftState.teams.length" 
+										class='QueuePlayerColumn PlayerPopOver Reach'  title="Average Draft position" data-trigger='hover click'  data-container="body" data-html="true"
+										data-content="Based on his CUSTOM ADP, {{player.name}} is a <b>reach</b> for round {{DraftState.currentRound}}.">
+										<div class="ColumnLabel">ADP</div>{{p.adp}}
+									</div>
+									<div ng-hide="p.isIDP || p.adp <= 0 || p.adp - DraftState.takenPlayerCount > 2 * DraftState.teams.length" 
+										class='QueuePlayerColumn'  title="Average Draft position"
+										title="CUSTOM ADP">
+										<div class="ColumnLabel">ADP</div>{{p.adp}}
+									</div>
+									<div ng-show="!p.isIDP && p.adp <= 0" 
+										class='QueuePlayerColumn PlayerPopOver Reach'  title="Average Draft position" data-trigger='hover click'  data-container="body"
+										data-content="{{player.name}} does not appear in the ADP rankings">
+										<div class="ColumnLabel">ADP</div>NR
+									</div>
+								
+									
+									<div ng-hide="p.isIDP" class="QueuePlayerColumn QueuePlayerDivider"></div>
+									
+									<div ng-hide="p.isIDP" class="QueuePlayerColumn {{p.isTopVote ? 'TopChoice' : ''}}" title="Expert Votes">
+										<div class="ColumnLabel">Expert %</div>{{p.percVote + '%'}}
+									</div>
+								
+									<div ng-hide="p.isIDP" class="QueuePlayerColumn {{p.sos <= 8 ? 'TopChoice' : p.sos> 24 ? 'BottomChoice' :''}}" title="Strength of Schedule">
+										<div class="ColumnLabel">SOS</div>
+										{{p.sos <= 8 ? 'Easy' : p.sos> 24 ? 'Tough' : 'Medium'}}
+									</div>
+									
+								
+									<div ng-hide="p.isIDP" class="QueuePlayerColumn {{p.isTopValue ? 'TopChoice' : ''}}" title="Value Based Drafting Score">
+										<div class="ColumnLabel">VBD</div>{{p.vbd}}
+									</div>
+											
+										
+								
+								</div>
+								
+								<div ng-show="queueComparison == 'Expert'"  class='QueuePlayerData'>
+								
+									<div ng-show="!p.isIDP && p.ecr"
+										class="QueuePlayerColumn SmallNumber" title="{{DraftState.hasECR ? 'Expert Consensus Rankings' : 'Overall Rank' }}">
+										<div class="ColumnLabel">{{DraftState.hasECR ? 'ECR' : 'RANK'}}</div>{{p.ecr}}
+									</div>
+									<div ng-hide="p.isIDP || p.ecr" 
+										class='QueuePlayerColumn SmallNumber PlayerPopOver Reach' data-trigger='hover click'  data-container="body"
+										data-content="{{player.name}} does not appear in the Overall {{DraftState.hasECR ? 'Expert Consensus Rankings' : 'Rankings' }}."
+											 title="{{DraftState.hasECR ? 'Expert Consensus Rankings' : 'Overall Rank'}}">
+										<div class="ColumnLabel">{{DraftState.hasECR ? 'ECR' : 'RANK'}}</div>NR
+									</div>
+
+									<div ng-hide="p.isIDP"
+										class="QueuePlayerColumn SmallNumber" title="Best Rank">
+										<div class="ColumnLabel">BEST</div>{{p.bestRank > 0 ? p.bestRank : 'NR'}}
+									</div>	
+										
+									
+									<div ng-show="p.isIDP" class="QueuePlayerColumn SmallNumber" 
+										title="Expert Voting does not apply to IDP">
+									</div>
+									
+									
+										
+									<div ng-show="!p.isIDP && p.adp > 0 && p.adp - DraftState.takenPlayerCount > 2 * DraftState.teams.length" 
+										class='QueuePlayerColumn SmallNumber PlayerPopOver Reach'  title="Average Draft position" data-trigger='hover click'  data-container="body" data-html="true"
+										data-content="Based on his CUSTOM ADP, {{player.name}} is a <b>reach</b> for round {{DraftState.currentRound}}.">
+										<div class="ColumnLabel">ADP</div>{{p.adp}}
+									</div>
+									<div ng-hide="p.isIDP || p.adp <= 0 || p.adp - DraftState.takenPlayerCount > 2 * DraftState.teams.length" 
+										class='QueuePlayerColumn SmallNumber'  title="Average Draft position"
+										title="CUSTOM ADP">
+										<div class="ColumnLabel">ADP</div>{{p.adp}}
+									</div>
+									<div ng-show="!p.isIDP && p.adp <= 0" 
+										class='QueuePlayerColumn SmallNumber PlayerPopOver Reach'  title="Average Draft position" data-trigger='hover click'  data-container="body"
+										data-content="{{player.name}} does not appear in the ADP rankings">
+										<div class="ColumnLabel">ADP</div>NR
+									</div>
+										
+									<div ng-show="p.isIDP" class="QueuePlayerColumn SmallNumber"></div>
+									<div ng-show="p.isIDP" class="QueuePlayerColumn SmallNumber"></div>
+										
+									<div ng-hide="p.isIDP" class="QueuePlayerColumn LargeNumber {{p.isTopVote ? 'TopChoice' : ''}}" title="Expert Votes">
+										{{p.percVote + '%'}}
+										<div class="ColumnLabel Below">of experts agree</div>
+									</div>
+									
+									<div ng-show="p.isIDP" class="QueuePlayerColumn LargeNumber" 
+										title="Expert Voting does not apply to IDP">
+										N/A
+									</div>
+								</div>
+								
+								<div ng-show="queueComparison == 'Notes' && player.note"
+									class="QueuePlayerColumn LongText" ng-bind-html="player.note | unsafe">
+								</div>
+								
+							
+							
+								
+								<div ng-show="queueComparison == 'Value' && !p.isIDP" class='QueuePlayerData'>
+								
+									<div class="QueuePlayerColumn {{p.isTopVONA ? 'TopChoice2' : ''}}" title="Value Over Next Available player">
+										<div class="ColumnLabel">VONA</div>{{p.vona > 0 ? ('+' + p.vona) : "0"}}
+									</div>
+									<div class="QueuePlayerColumn {{p.isTopVORP ? 'TopChoice2' : ''}}" title="Value Over Last Starter">
+										<div class="ColumnLabel">VOLS</div>{{p.vols > 0 ? ('+' + p.vols) : "0"}}
+									</div>
+									<div class="QueuePlayerColumn {{p.isTopValue ? 'TopChoice2' : ''}}" title="Value Over Replacement player">
+										<div class="ColumnLabel">VORP</div>{{p.vorp > 0 ? ('+' + p.vorp) : "0"}}
+									</div>
+									<div class="QueuePlayerColumn LargeNumber {{p.isTopValue ? 'TopChoice' : ''}}" title="Value Based Drafting Score">
+										<div class="ColumnLabel">VBD SCORE</div>{{p.vbd}}
+									</div>
+									
+								</div>
+								
+								
+								<div ng-show="queueComparison == 'ProjTot'"  class='QueuePlayerData'>
+								
+									<div ng-repeat="stat in player.projections" 
+										class="QueuePlayerColumn QueuePlayerProj" title="{{stat.n}}">
+										<div class="ColumnLabel">{{stat.t}}</div>{{stat.f}}
+									</div>		
+															
+									<div class="QueuePlayerColumn LargeNumber {{p.isTopFP ? 'TopChoice' : ''}}" title="Fantasy Points">
+										<div class="ColumnLabel">Fantasy Points</div>{{p.fp}}
+									</div>
+									
+								</div>
+								
+								<div ng-show="queueComparison == 'StatTot'"  class='QueuePlayerData'>
+								
+									<div ng-repeat="stat in player.stats_py" 
+										class="QueuePlayerColumn QueuePlayerProj" title="{{stat.n}}">
+										<div class="ColumnLabel">{{stat.t}}</div>{{stat.f}}
+									</div>		
+															
+									<div class="QueuePlayerColumn LargeNumber {{p.isTopPY ? 'TopChoice' : ''}}" title="Fantasy Points">
+										<div class="ColumnLabel">Fantasy Points</div>{{p.fp_py}}
+									</div>
+									
+								</div>
+								
+								
+								<div ng-show="queueComparison == 'Value' && p.isIDP" class='QueuePlayerData'>
+								
+									<div ng-show="p.isIDP" class="QueuePlayerColumn"></div>
+									<div ng-show="p.isIDP" class="QueuePlayerColumn"></div>
+									<div ng-show="p.isIDP" class="QueuePlayerColumn"></div>									
+									<div ng-show="p.isIDP" class="QueuePlayerColumn LargeNumber" 
+										title="Value Based Drafting does not apply to IDP">
+										N/A
+									</div>
+								</div>
+								
+								<div ng-show="queueComparison == 'SOS' && p.sos > 0" class='QueuePlayerData'>
+								
+									<div class="QueuePlayerColumn {{p.sos1 <= 8 ? 'TopChoice' : p.sos1 > 24 ? 'BottomChoice' :''}}" title="Strength of Schedule">
+										<div class="ColumnLabel">1st Half</div>
+										{{p.sos1 > 0 ? ('#' + p.sos1) : "&nbsp;"}}
+									</div>
+									<div class="QueuePlayerColumn {{p.sos2 <= 8 ? 'TopChoice' : p.sos2 > 24 ? 'BottomChoice' :''}}" title="Strength of Schedule">
+										<div class="ColumnLabel">2nd Half</div>
+										{{p.sos2 > 0 ? ('#' + p.sos2) : "&nbsp;"}}
+									</div>
+									<div class="QueuePlayerColumn {{p.sos3 <= 8 ? 'TopChoice' : p.sos3> 24 ? 'BottomChoice' :''}}" title="Strength of Schedule">
+										<div class="ColumnLabel">Playoffs</div>
+										{{p.sos3 > 0 ? ('#' + p.sos3) : "&nbsp;"}}
+									</div>									
+													
+									<div class="QueuePlayerColumn NumberAndText {{p.sos <= 8 ? 'TopChoice' : p.sos> 24 ? 'BottomChoice' :''}}" title="Strength of Schedule">
+										<div class="ColumnLabel">Full Season</div>
+										{{p.sos <= 8 ? 'Easy' : p.sos> 24 ? 'Tough' : 'Medium'}} ({{'#' + p.sos}})
+									</div>
+								
+								</div>
+								
+							
+		
+								<div class="PlayerButtons">
+									<div class="btn-group DismissButton {{ $last ? 'open-upward' : ''}}">
+									  <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"><i class="icon-remove"></i></a>
+									  <ul class="dropdown-menu pull-right">
+										<li><a href="javascript:void(0)" ng-click="onPlayerDismiss(player, 1)">Dismiss {{ player.name }} for this round</a></li>
+										<li><a href="javascript:void(0)" ng-click="onPlayerDismiss(player, 2)">Dismiss him for 2 rounds</a></li>
+										<li><a href="javascript:void(0)" ng-click="onPlayerDismiss(player, 100)">Remove him completely</a></li>
+									  </ul>
+									</div>						
+								
+									
+										<input type="button" class="btn btn-mini btn-primary DraftButton" ng-show="{{draftroom.playerIsAvailable(player)}}"
+											ng-click="onPlayerDraft(player)" value="DRAFT" onclick="ga('send','event','Mock Draft','Draft Pick','Queue SPA');ga('DWTracker.send','event','Mock Draft','Draft Pick','Queue SPA');">
+										
+									<div class="DraftButton AlreadyDrafted" ng-hide="{{draftroom.playerIsAvailable(player)}}">ALREADY DRAFTED</div>
+								</div>
+								
+							
+							
+							<div style="clear:both"></div>
+						  </div>
+					</div>
+				  </div>
+				  
+				</div>
+					
+			</div>
+		  	
+	
+		  </div>
+		</div>
+				
+		<div ng-show="DraftState.isCompleted">
+		
+			<div class="HowDidYouDo" style="width:300px;margin:20px auto;text-align:center">
+				<h2 class="CompletedIframeDraft">Draft Completed!</h2>
+				<div class="TeamStatus TeamStatusCompleted">
+				
+					<a class="btn btn-large btn-primary"  ng-click="analyzeDraft($event)" 
+						style="width: 210px;" ng-show='DraftState.directoryDraftId'>
+						Analyze results
+					</a>
+				
+				</div>
+
+				<h2 class="CompletedIframeDraft" style="padding-top:20px;">More draft tools...</h2>
+				<div class="TeamStatus TeamStatusCompleted">
+				<table>
+				<tbody><tr><td><a href="http://draftwizard.fantasypros.com/football/cheat-sheets/" target="_top"><img src="//cdn.fantasypros.com/csw/images/csw_editor_icon_50x50_color.png"></a></td>
+				<td><div class="CswModule" style="text-align:left">CHEAT SHEET CREATOR</div>
+				<div class="CswCaption"><a href="http://draftwizard.fantasypros.com/football/cheat-sheets/" target="_top">Easily customize your rankings »</a></div></td>
+				</tr>
+				
+				<tr><td><a href="http://draftwizard.fantasypros.com/football/draft-assistant/" target="_top"><img src="//cdn.fantasypros.com/csw/images/csw_assistant_icon_50x50_color.png"></a></td>
+				<td><div class="CswModule" style="text-align:left">LIVE DRAFT ASSISTANT</div>
+				<div class="CswCaption"><a href="http://draftwizard.fantasypros.com/football/draft-assistant/" target="_top">Get help during your real draft »</a></div></td>
+				</tr>
+				
+				</tbody></table>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>	
+
+		<div style="clear:both"></div>
+		
+	</div>
+	
+
+
+	<div class="main-content main-content-large" 
+		 ng-hide="DraftState.syncFailed"
+		style="{{draftRoomView.isCheatSheet ? 'margin:0' : ''}}" ng-class="{IgnoreTags:hidePlayerTags}">
+	  <div class="inner" style="{{draftRoomView.isCheatSheet ? 'margin:0' : ''}}">
+		
+		<div style="padding-top:0px" ng-show="draftRoomView.isFull || draftRoomView.isCheatSheet">
+				
+		  <div class="pills-wrap feature-bg">						
+			<ul class="pills pills-wide" ng-show="draftRoomView.isFull">
+			  <li ng-class="{active:isTabSelected(-1)}" class="mobile-tab"><a href ng-click="selectTab(-1)">Rosters</a></li>
+			  <li ng-class="{active:isTabSelected(-2)}" class="mobile-tab"><a href ng-click="selectTab(-2)">Draft Log</a></li>
+			  <li ng-class="{active:isTabSelected(-3)}" class="tablet-tab"><a href ng-click="selectTab(-3)">Draft Monitor</a></li>
+
+			  <li ng-class="{active:isTabSelected(1)}"><a href ng-click="selectTab(1)">Cheat Sheets</a></li>
+			
+			  <li ng-class="{active:isTabSelected(2)}"><a href ng-click="selectTab(2)">Draft Board</a></li>
+			
+			  <li ng-class="{active:isTabSelected(3)}"><a href ng-click="selectTab(3)">Roster Watch</a></li>
+		
+			
+			
+			  
+			  <li ng-class="{active:isTabSelected(7)}"><a href ng-click="selectTab(7)">Pick Predictor</a></li>
+			  			  
+			
+		
+			</ul>
+		  </div>
+		  	  
+			<div class="panel" ng-show="isTabSelected(1)">
+						  
+				<div class="CheatSheetsInstructions">
+				  	Click below to add to queue
+				</div>
+				
+					
+				<div class="CheatSheetsControls" style="padding-bottom:15px">
+				
+					<a class="btn ReOrderCheatSheets" data-toggle="modal" href="#reorderModal">Reorder</a>
+					
+					
+					
+					<label class="checkbox CheatSheetsOption">
+						<input type="checkbox" ng-model="availableOnly">
+						Hide Drafted Players
+					</label>
+					
+					<div style='float:right;margin-bottom:10px;margin-right:15px;'>
+						Display
+	  	    			<span class="select-wrap">
+						  <select ng-model="cheatSheetTopPlayers"
+							ng-options="p as p.label for p in cheatSheetTopPlayersOptions track by p.value"
+							style="">
+						  </select>
+						</span>
+					</div>
+					
+	   	    		<span class="select-wrap" style="margin-right:15px;float:right">
+					  <select ng-model="selectedCheatSheet" ng-change="loadCheatSheet(selectedCheatSheet,true)"
+					  		style="max-width: 200px;">
+					  
+					  	<option value="ECR">Latest FantasyPros ECR</option>
+					  	
+					  </select>
+					</span>
+					
+				</div>
+
+				<div id="csContainer" style="clear:both">
+				  <div ng-repeat="r in rankingsArray" on-last-rankings
+				  	 class="SingleCheatSheet " id="cs_{{$index}}">
+				  	 
+				  	<div class="CheatSheetTitle" id="csTitle{{$index}}">					  		
+					  	<div style="float:left;padding-top:3px">
+					  		{{r.position}}
+					  	</div>  				  	
+					  	<div class="CheatSheetSummary" id="csSummary{{$index}}" style="float:left;">
+							<span ng-repeat="t in r.tiers" class="label {{t.avail == t.total ? 'label-success' : t.avail == 0 ? '' : t.avail < 4 ? 'label-important' : t.avail < 8 ? 'label-warning' : 'label-success'}}"
+								title="{{t.index > 0 ? 'Tier ' + t.index + ' currently has ': ''}}{{
+									t.avail == t.total ? 'all players' :  
+									t.avail == 0 ? 'no player' : 
+									t.avail + ' out of ' + t.total + ' players'}} still available" >
+								{{t.avail}}/{{t.total}}
+							</span>
+						</div>	
+				  		<i class="fa fa-question-circle-o PlayerPopOver" style="margin-left:5px;color: #9b9b9b;font-size: 14px;"
+				  			ng-show="r.info" data-container="body" data-trigger="hover click" 
+				  			data-content="{{r.info}}"></i>					  		
+				  	</div>
+				  		 	
+				  	<div style="clear:both"></div>	 
+				  					  	
+				  	<div id="csDetails{{$index}}" class="LiveCheatSheet"
+				  		style="height:{{$index > 0 && !expandedRankings[$index] ? ('' + (20 * cheatSheetTopPlayers.value + 10) + 'px') : 'auto'}}">
+				  	  <div ng-repeat="p in r.players"  ng-init="player = DraftState.playerMap[p.id]">
+				  	  	<div class="Tier" ng-if="p.tier && p.isFirstInTier && (
+						  	  		(availableOnly && (expandedRankings[$parent.$index] || p.lineAva < cheatSheetTopPlayers.value)) ||
+						  	  		(!availableOnly && ($parent.$index == 0 || expandedRankings[$parent.$index] || p.lineAll < cheatSheetTopPlayers.value) ) )">
+				  	  		Tier {{p.tier}}
+				  	  	</div>
+				  	  	
+				  	  	<div pid="{{p.id}}" 
+					  	  		ng-show="player && ( 
+						  	  		(availableOnly && draftroom.playerIsAvailable(player) && ($parent.$index == 0 || expandedRankings[$parent.$index] || p.lineAva < cheatSheetTopPlayers.value) ) ||
+						  	  		(!availableOnly && ($parent.$index == 0 || expandedRankings[$parent.$index] || p.lineAll < cheatSheetTopPlayers.value) ) )"				  	  
+						  	  	ng-class="{Available:draftroom.playerIsAvailable(player),Taken:draftroom.playerIsTaken(player)}" 
+						  	  	class="{{DraftState.nominee == p.id ? 'Nominee' : ''}}	
+					  				{{draftroom.playerIsInUserTeam(player) ? 'PlayerPopOver UserTeamCell' : p.tag ? 'PlayerPopOver Player' + p.tag : ''}}" 
+					  			data-trigger="{{draftroom.playerIsInUserTeam(player) || p.tag ? 'hover click' : ''}}"
+					  			data-content="{{draftroom.playerIsInUserTeam(player) ? player.name + ' is on your team' : p.tag ? player.name + ' is tagged as ' + (p.tag | uppercase): ''}}">
+					  		<div class="CheatSheetRank">{{$index + 1}}.</div>
+					  		<a href="javascript:void(0)" ng-click="onPlayerClick(p)">
+					  			<span class="CheatSheetPlayerName">{{player.name}}</span> 
+					  			<span class="CheatSheetPlayerPosTeam">
+						  			<span ng-show="r.position == 'Overall'">{{player.eligibility}} - </span>
+						  			{{player.team}}
+					  			</span>
+					  		
+					  		</a>
+					  		
+					  			<span class="label label-cuff PlayerPopOver" data-trigger="hover click" data-container="body" ng-if="DraftState.handcuffs[player.id]"
+					  				data-content="{{player.name}} is the RB handcuff for {{DraftState.handcuffs[player.id]}} who is already on your team" 
+					  				>CUFF</span>
+					  		
+							<span class='PlayerAlert PlayerPopOver' 
+								ng-if="DraftState.alertMap[p.id]"
+								data-content="{{DraftState.alertMap[p.id].details}}">
+								{{DraftState.alertMap[p.id].tag}}
+							</span>	
+					  	
+					  	</div>
+					  </div>
+				  	</div>  
+				  	
+				  	<a ng-show="$index > 0 && r[availableOnly?'linesAva':'linesAll'] > cheatSheetTopPlayers.value"
+				  		ng-click="expandedRankings[$index] = !expandedRankings[$index]"
+				  		style="margin-left:35px;font-size:12px;text-decoration:underline">
+				  		Show {{expandedRankings[$index] ? 'less' : 'more'}}
+				  	</a>
+				  	
+				  </div>		  		
+				</div>	
+				
+				<div style="clear:both"></div>
+			</div>
+			
+			
+			<div class="panel" ng-show="isTabSelected(2)">	
+				<div id="draftBoard"></div>
+			</div>
+		
+		
+			<div class="panel" ng-show="isTabSelected(3)">
+			
+				<div class="ScarcityInfo" ng-show="DraftState.scarcityInfo">Players drafted / starting slots:
+					<span ng-repeat="info in DraftState.scarcityInfo" class="label Pos{{info.p}}">{{info.p}}: {{info.c}}/{{info.s}}</span>
+				</div>
+				
+				<table class="table table-bordered DraftBoard">
+				  <tbody>
+				    <tr>
+						<th>&nbsp;</th>
+						<th ng-repeat="team in DraftState.teams" class="{{ $index == DraftState.userPos ? 'UserTeamCell' : ''}}">{{team.name}}</th>
+					</tr>
+					
+				    <tr ng-repeat="starter in DraftState.teams[0].roster" 
+				    	ng-init="starterIndex = $index" ng-show="starter.slot != 'BN'">
+						<th class="ColoredDraftCell Pos{{starter.slot}}" title="{{starter.flexPositions ? starter.flexPositions : starter.slot}}">{{starter.slot}}{{starter.slotIndex}}</th>
+						<td ng-repeat="team in DraftState.teams" ng-init="player = DraftState.playerMap[team.roster[starterIndex].id]"
+								class="DraftCell {{ $index == DraftState.userPos ? 'UserTeamCell' : ''}}">
+						  <div class="ColoredDraftCell">
+						  
+							<a ng-click="onPlayerClick(player)"  href="javasript:void(0)">
+								{{player.first_name | capitalize}}
+								<br/>
+								{{player.last_name | capitalize}}
+							</a>
+							<br/><span class='Position' ng-show="player">{{player.eligibility}} - {{player.team}}</span>
+						  </div>
+						</td>
+					</tr>
+					
+				    <tr>
+						<th class="ColoredDraftCell PosBN">Bench</th>
+						<td ng-repeat="team in DraftState.teams" 
+							class="DraftCell {{ $index == DraftState.userPos ? 'UserTeamCell' : ''}} BenchCell">
+							<div ng-repeat="p in team.roster" ng-init="player = DraftState.playerMap[p.id]"
+								class="ColoredDraftCell"
+								ng-show="p.slot == 'BN' && player.id" style="{{p.isFirstBench ? 'border:none' : ''}}">
+							  
+								<a ng-click="onPlayerClick(p)" href="javasript:void(0)">
+						<!-- 			<span class="label PosLabel Pos{{player.position}}">{{player.position}}</span>  -->
+									{{player.first_name | capitalize}}
+									<br/>
+									{{player.last_name | capitalize}}
+								</a>
+								<br/><span class='Position'>{{player.eligibility}} - {{player.team}}</span>
+							</div>
+						</td>
+					</tr>
+				  
+				  </tbody>
+				</table>
+				
+			</div>
+			
+			
+
+			
+			
+		
+			<div class="panel" ng-show="isTabSelected(7)">	
+			
+				<div class="alert alert-danger TabDisabledWarning" style="width:500px;text-align:center;display:none"></div>
+				
+				<div class="CheatSheetsInstructions">
+					Draft him now or later? These are odds that the player will be taken before your next {{ predictTurn > 1 ? '' + predictTurn + " turns" : "turn"}}.
+				</div>
+				<div class="CheatSheetsControls">
+						
+					
+					
+					<div class="CheatSheetsOption" style="padding-top:2px">
+						Predict
+						
+	    	    		<span class="select-wrap">
+							<select ng-model="selectedPredictorOption" 
+								ng-options="p as p.label for p in predictorOptions track by p.rank" >
+							</select>
+						</span>
+						({{DraftState.pickPredictors[selectedPredictorOption.rank].pickPredicted}} picks) 
+					</div>
+				
+					<div style="clear:both" 
+							ng-hide="selectedPredictorOption.rank ==0 || DraftState.pickPredictors[selectedPredictorOption.rank].pickPredicted > 0">
+						At this point of the draft, the Pick Predictor can only predict up to {{DraftState.pickPredictors.length}} round(s)
+					</div>
+				</div>
+				
+				<div id="ppContainer" style="clear:both" ng-show="DraftState.pickPredictors[selectedPredictorOption.rank].pickPredicted > 0">
+				  	<div ng-repeat="r in rankingsArray" class="SingleCheatSheet" id="pp_{{$index}}">
+						<div class="CheatSheetTitle">{{r.title}}</div>
+						<div class="PredictionCheatSheet">
+					  	  <div ng-repeat="p in r.players"  ng-init="player = DraftState.playerMap[p.id]" 
+					  	  		class="{{p.tag ? 'PlayerPopOver Player' + p.tag : ''}}" 
+					  			data-trigger="{{p.tag ? 'hover click' : ''}}"
+					  			data-content="{{p.tag ? player.name + ' is tagged as ' + (p.tag | uppercase): ''}}">
+					  	  	  <div class="Tier" ng-if="p.tier && p.isFirstInTier && p.lineAva < 20">
+						  	  	Tier {{p.tier}}
+						  	  </div>
+						  	  <div title="{{p.note}}" pid="{{p.id}}" 
+						  	  	ng-show="player && draftroom.playerIsAvailable(player) && p.lineAva < 20"				  	  
+						  	  	class="PlayerPrediction Available" >
+						  		<div class="CheatSheetRank">{{$index + 1}}.</div>
+						  		<a href="javascript:void(0)" ng-click="onPlayerClick(p)">
+						  			<span class="CheatSheetPlayerName">{{player.name}}</span> 
+						  			<span class="CheatSheetPlayerPosTeam">
+							  			<span ng-show="r.position == 'Overall'">{{player.eligibility}} - </span>
+							  			{{player.team}}
+						  			</span>
+						  		</a>
+								<span class="label {{DraftState.pickPredictors[selectedPredictorOption.rank][p.id] >= 75 ? 'label-important' :
+										DraftState.pickPredictors[selectedPredictorOption.rank][p.id] >= 50 ? 'label-warning' : 
+										DraftState.pickPredictors[selectedPredictorOption.rank][p.id] >= 25 ? 'label-ok' : 'label-success'}} Prediction">
+									{{DraftState.pickPredictors[selectedPredictorOption.rank][p.id] > 99 ? '99' :
+										DraftState.pickPredictors[selectedPredictorOption.rank][p.id] >= 1 ?
+											DraftState.pickPredictors[selectedPredictorOption.rank][p.id] : '<1' }}%</span>
+						  		
+						  			<span class="label label-cuff PlayerPopOver" data-trigger="hover click" data-container="body" ng-if="DraftState.handcuffs[player.id]"
+						  				data-content="{{player.name}} is the RB handcuff for {{DraftState.handcuffs[player.id]}} who is already on your team" 
+						  				>CUFF</span>
+						  		
+						  	  </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both"></div>				
+			</div>
+				
+			
+			
+
+	
+		<span class="how-wide"></span>
+	
+   		</div>
+     </div>
+   </div>
+   
+   <div class='side-content'  ng-show="draftRoomView.isFull && isTabSelected(-2) == false && !DraftState.syncFailed">
+    <div class="inner">
+			
+	   	<div class="select-wrap">
+			<select ng-model="rosterIndex" ng-options="DraftState.teams.indexOf(item) as item.name for item in DraftState.teams">
+			</select>
+		</div>
+
+		<div id="yourTeamModule_new"  class="YourTeamModule scrollbar-outer" >
+	    	
+		  	<div ng-repeat="p in DraftState.teams[rosterIndex].roster" ng-init="player = DraftState.playerMap[p.id]"
+		  			pid="{{p.id}}" class="MyPlayer" ng-show="p.slot != 'BN'">
+		  	    <span class="label-slot" title="{{p.flexPositions ? p.flexPositions : p.slot}}">{{p.slot}}</span>
+		  		<span ng-show="player.id" class="PlayerName">
+		  			{{player.name.length < 22 ? player.name : 
+		  				player.position == 'DST' ? player.first_name :
+		  					player.first_name[0] + '. ' + player.last_name | capitalize}} 
+		  		</span>
+	  			<span class="CheatSheetPlayerPosTeam" ng-show="player && player.position != 'DST'">
+		  			{{player.team}}
+	  			</span>
+	  			
+	  			
+		  			<span class="ByeWeek" title="Bye Week" ng-show="player.bye_week">BYE {{player.bye_week}}</span>
+	  			
+		  		
+			  	
+			  	
+	  						  
+		  		
+				<div class="MovePlayer" title="Move {{player.name}} to ..." ng-if="p.moves.length > 0">
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li ng-repeat="pos in p.moves">
+								<a href="javascript:void(0)" ng-click="movePlayerInTeam(p,pos)">
+									<span class="PotentialMove">Move to {{pos}}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+		  	</div>
+	    	<div class="heading-team">
+	        	Bench
+	        </div>
+		  	<div ng-repeat="p in DraftState.teams[rosterIndex].roster" ng-init="player = DraftState.playerMap[p.id]"
+		  			pid="{{p.id}}" class="MyPlayer" ng-show="p.slot == 'BN'">
+		  	    <span class="label-slot">{{player ? player.position : p.slot}}</span>
+		  		<span ng-show="player.id" class="PlayerName">
+		  			{{player.name.length < 22 ? player.name : 
+		  				player.position == 'DST' ? player.first_name :
+		  					player.first_name[0] + '. ' + player.last_name | capitalize}} 
+		  		</span>
+	  			<span class="CheatSheetPlayerPosTeam" ng-show="player && player.position != 'DST'">
+		  			{{player.team}}
+	  			</span>
+	  			
+	  				<span class="ByeWeek" title="Bye Week" ng-show="player.bye_week">BYE {{player.bye_week}}</span>
+	  			
+		  		
+			  				  
+		  		
+				<div class="MovePlayer" title="Move {{player.name}} to ..." ng-if="p.moves.length > 0">
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li ng-repeat="pos in p.moves">
+								<a href="javascript:void(0)" ng-click="movePlayerInTeam(p,pos)">
+									<span class="PotentialMove">Move to {{pos}}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+		  	</div>
+	  	</div>
+	  	
+	
+		<span class='how-wide'></span>
+	</div>
+   </div>   
+   
+   <div class="side-nav" ng-show="draftRoomView.isFull && isTabSelected(-1) == false && !DraftState.syncFailed">
+
+		
+		
+        	<div class="heading-round" ng-show="!DraftState.isCompleted">
+        		<span>Round {{'#'+DraftState.currentRound}}</span> / 
+        		Pick {{'#'+DraftState.overallPick}} Overall
+        	</div>
+        			
+			
+	        	<div class="heading-clock" ng-show="!DraftState.isCompleted && DraftState.onTheClock">
+	        		<div>On The Clock:</div>
+	        		<div class="team-on-the-clock">{{DraftState.onTheClock}}</div>
+	        	</div>	
+				
+				
+			
+        	<div class="heading-picks-before" ng-show="!DraftState.isCompleted">
+        		Picks until your next turn: <span>{{DraftState.picksBefore}}</span>
+        	</div>
+		
+
+		
+			<div class="heading-picks-before" ng-show="DraftState.startersInfo" style="font-size:12px">
+	        	<div class="heading-monitor" style="padding-top:0;padding-bottom:0">Position Tracker</div>
+	        	<div style="padding-bottom:5px">{{DraftState.startersFilled}}/{{DraftState.startersTotal}} Starting Slots Filled</div>
+	        	<div style="float:left;padding:0 8px">
+		        	<div ng-repeat="info in DraftState.startersInfo" ng-show="$index < DraftState.startersInfo.length / 2">
+		        		<div style="width:40px;font-weight:bold;text-align:center;float:left;padding-left:0px;">{{info.p}}</div>
+		        		<div style="width:50px;text-align:center;float:left">{{info.c}}/{{info.s}}</div>	
+	        			<div style="clear:both"></div>	        		
+		        	</div>
+	        	</div>
+	        	<div style="float:left;padding:0 8px">
+		        	<div ng-repeat="info in DraftState.startersInfo" ng-show="$index >= DraftState.startersInfo.length / 2">
+		        		<div style="width:40px;font-weight:bold;text-align:center;float:left;padding-left:0px;">{{info.p}}</div>
+		        		<div style="width:50px;text-align:center;float:left">{{info.c}}/{{info.s}}</div>	
+	        			<div style="clear:both"></div>	        		
+		        	</div>
+	        	</div>
+	        	<div style="clear:both"></div>
+			</div>
+			
+				
+		
+					  	
+		
+	        <div class="heading-monitor" ng-show="DraftState.draftedPlayers.length">Draft Log</div>
+	        
+			<div class="DraftMonitor  scrollbar-outer" >
+				<div ng-repeat="p in DraftState.draftedPlayers| orderBy:'-'" 
+					ng-init="player = DraftState.playerMap[p.id]" pid="{{p.id}}"
+					
+					id="pick{{p.pick}}" class="PickedPlayer {{p.isLastInRound ? 'RoundSeparator' : ''}} {{p.isNewPick ? 'HiddenAnimation' :''}}" 
+					title="Pick {{'#' +(p.pick)}} by {{p.owner}}: {{player.name}} ({{player.team}} - {{player.eligibility}})" >
+				  <div class="PickedPlayerRow" ng-class="{UserTeamCell:draftroom.playerIsInUserTeam(player)}">
+				
+					  <div class="Rank {{p.isKeeper ? 'KeeperTag' : ''}}">{{p.isKeeper ? 'KPR' : p.round + '.' + p.posInRound}}</div>
+				
+					  <a ng-show="player" 
+					  		ng-click="onPlayerClick(player)" href="javascript:void(0)">
+					  	{{player.name.length > 18 ? 
+						  	  	(player.position == 'DST' ? player.first_name : player.first_name[0] + '. ' + player.last_name) :
+					  				player.name  | capitalize}}</a>
+					  	<span class="CheatSheetPlayerPosTeam" ng-hide="player.position == 'DST'">{{player.team}}</span> 
+					  <div class="PickedPlayerPos">
+					  	<span class="label PosLabel Pos{{player.position}}">{{player.position}}</span>
+					  
+					  
+						<a id="overrideLink_{{p.pick}}" href="javascript:void(0)" class="OverridePick" 
+							title="Click here if you think {{p.owner}} should have made another pick" 
+							ng-if="p.isNewPick && !p.isKeeper && !draftroom.playerIsInUserTeam(player)" 
+							ng-click="showOverridePick(p)">Edit</a>
+					  
+					  </div>
+				  </div>
+				</div>
+			</div>
+		
+			  	
+	  	
+
+
+		<span class="how-wide"></span>
+   </div>
+   
+ 
+
+	
+		<div class="modal" id="overrideModal" style="display:none">
+		  <div class="modal-header">
+		    <button class="close" data-dismiss="modal">x</button>
+		    <h2>Edit Pick</h2>
+		  </div>
+		  <div class="modal-body">
+		  </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default"  data-dismiss="modal">Cancel</button>
+	      </div>
+		</div>
+	  
+	
+	<div class="modal" id="completedMockModal" style="display:none">
+	  <div class="modal-body" style="padding:0px">
+		<div class="EndMockLineup" style="">
+	    	<button class="close" data-dismiss="modal" style="float:right;margin-right: -5px;margin-top: -10px;">x</button>
+	    	<h4>Your Team</h4>
+			<div class='PlayerList scrollbar-outer'>
+		  	  <div ng-repeat="p in DraftState.teams[DraftState.userPos].roster" ng-init="player = DraftState.playerMap[p.id]"
+		  			class="PlayerRow">
+		  		<div class="PosCounter">{{p.slot}}</div>
+		  		<div class="Player">{{player.name}}</div> 
+		  		<div class="TeamAbbrev">{{player.team}}</div>
+		  		<div style="clear:both"></div>
+		  	  </div>
+		  	</div>
+	  	</div>
+		<div style="float:left; margin-left:30px; text-align:center;padding-top:25px">
+		
+			<center>
+		    <h4>Your Draft Grade Is:</h4>
+		    
+		    <div class="DraftGrade DraftGrade{{DraftState.draftGrade | limitTo: 1}}"
+		    	style="margin-top:15px"
+		    	ng-class='{DraftGradeGreen : (DraftState.draftScore >= 87), DraftGradeOrange : (DraftState.draftScore < 87 && DraftState.draftScore >= 73), DraftGradeRed : (DraftState.draftScore < 73 && DraftState.draftScore >= 0) }'>
+		    	{{DraftState.draftGrade}}
+		    </div>
+			
+		    <h4>{{DraftState.draftScore | number:0}} <span style="font-weight:normal">out of</span> 100</h4>
+		    
+			</center>
+		    
+		    
+		    <div style="clear:both;height:10px;"></div>
+		    
+			<a class="btn btn-large btn-end-mock"
+                onclick="ga('send','event','DW Post Draft Modal','Click Projected Standings','IDP');ga('DWTracker.send','event','DW Post Draft Modal','Click Projected Standings','IDP');"
+				ng-click="analyzeDraft($event)" ng-show='DraftState.directoryDraftId'>
+				Projected Standings
+			</a>
+			<a class="btn btn-large btn-end-mock" 
+                onclick="ga('send','event','DW Post Draft Modal','Mock Draft Again','IDP');ga('DWTracker.send','event','DW Post Draft Modal','Mock Draft Again','IDP');"
+				href="/simulator/start.jsp?startOver=Y&sport=nfl&teamCount=12&userPos=5&scoring=CUSTOM&draftKey=c5IUzeBKcXDghYZQYA4Ku_LXu21Icu7_bIU4ucF6DVE-BYNHsYjjroaIrjy3yMVSSbx9Gy9XQGveoEE7d2_JOXSDi4WiY361&post_draft=1">
+				Mock Draft Again
+			</a>
+			<a class="btn btn-large btn-end-mock" 
+                onclick="ga('send','event','DW Post Draft Modal','Click Draft for Cash','IDP');ga('DWTracker.send','event','DW Post Draft Modal','Click Draft for Cash','IDP');"
+				href="https://playdraft.com/fantasypros" target="_blank">
+				<img src="http://cdn.fantasypros.com/csw/images/logo_draft.png" class="draft-logo">
+				Draft for Cash
+			</a>
+		
+		<!--     
+		    <h4 style="clear:both;padding-top:20px">
+			    Stay ahead of the game with breaking news alerts for your players.
+			    <br>
+			    Get the FantasyPros Player News app.
+		    </h4>			
+			<div style="float:right;padding:10px 100px 0 20px">
+				<img src="//cdn.fantasypros.com/csw/images/player_news_mlb_phone.jpg" style="width:210px">
+			</div>
+			<div style="padding-left:0px;padding-top:50px;float:left">
+				<a href="https://itunes.apple.com/us/app/fantasypros-fantasy-baseball/id967102422?mt=8&amp;uo=4&amp;at=1l3votR" target="_blank"><img src="//cdn.fantasypros.com/csw/images/appstore.png"></a>
+				<br><br>
+				<a href="https://play.google.com/store/apps/details?id=news.fantasypros.com.fantasypros" target="_blank"><img style="height:40px;" src="//cdn.fantasypros.com/csw/images/en-play-badge.png"></a>
+			</div>
+		 -->
+		</div>
+	  </div>
+	</div>
+	
+
+	<div class="modal" id="reorderModal" style="display:none">
+	  <div class="modal-header">
+	    <button class="close" data-dismiss="modal">X</button>
+	    <h3>Reorder Cheat Sheets</h3>
+	  </div>
+	  <div class="modal-body">
+	    <p>Drag and Drop to reorder</p>
+		 <ul id="sortableCheatSheets" class="ui-sortable">				 
+			<li ng-repeat="r in rankingsArray" class="ui-state-default" rIndex="{{$index}}">
+				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>{{r.title}}
+			</li>
+	  	 </ul>
+	  </div>
+	  <div class="modal-footer">
+	    <a href="javascript:void(0)" onclick="$('#reorderModal').modal('hide')" class="btn">Close</a>
+	    <a href="javascript:void(0)" ng-click="reorderCheatSheets()" class="btn btn-primary">Save changes</a>
+	  </div>
+	</div>
+	
+	
+  
+	<div id="syncIntructions" ng-show="DraftState.syncFailed"> 
+	 
+	   	<div class="sync-errors">	   	
+			 
+			<h1>Unable to Connect</h1>  
+			<p>	
+				We're currently unable to connect to your live draft. If your draft hasn't started yet, then don't worry: 
+		
+				<br/>the Draft Assistant w/ Sync will be available once your draft begins.
+			</p> 
+			<p>If your draft has already started, please follow the steps below: </p>
+		
+		
+			<p class='indent'>1. Try refreshing the page.</p>
+			
+			<p class='indent'>
+				2. If this doesn't fix the problem, please delete and re-import your league, then relaunch the Draft Assistant: 
+				<a href='https://support.fantasypros.com/hc/en-us/articles/115004507887-My-Draft-Assistant-won-t-load-or-there-was-a-server-error-during-my-draft-What-do-I-do-' target='_blank'>How to delete and re-import your league</a>.</p>
+			
+			<p class='indent'>3. If you’re still unable to connect to your draft, please contact our support department using the following link: <a href="https://support.fantasypros.com/hc/en-us/requests/new" target="_blank">https://support.fantasypros.com/hc/en-us/requests/new</a></p>
+			
+		</div>
+	   
+	</div> 
+	
+	
+  </div>
+</div>
+
+<div id="sound"></div>
+
+
+	<div id="upgradeMessage" class="modal upgrade-modal">
+		<a href="javascript:void(0)" onclick="$('#upgradeMessage').fadeOut()"
+			style='position:absolute;top:9px;right:10px;color:white;font-weight:bold;font-size:20px;line-height: 20px;'>
+			<i class="fa fa-times-circle"></i>
+		</a>
+		<div class="modal-header">
+			<div class="title"></div>
+		</div>
+		<div class="modal-body">
+			<div class="upgrade-text"></div>
+		</div>
+	</div>
+	
+	<div class='modal upgrade-modal' id='nofreemockModal' style='display:none;width:550px;line-height:20px;'>
+		<a href="/football/mock-draft-simulator/" onclick="ga('send','event','Mock Limit','Click','No Thanks');ga('DWTracker.send','event','Mock Limit','Click','No Thanks');"
+			style='position:absolute;top:9px;right:10px;color:white;font-weight:bold;font-size:20px;line-height: 20px;'>
+			<i class="fa fa-times-circle"></i>
+		</a>
+		<div class="modal-header">
+			<!-- 
+			<div class="title">You have reached your daily limit of n mock drafts per day</div>
+			-->
+		</div>
+	  <div class='modal-body'>
+		<div class="upgrade-text">
+			Upgrade to Draft Wizard Hall of Fame to get <b>unlimited drafts</b> and <b>unlock powerful features</b> to help you win!
+			<br/><br/>
+			<a href="/premium/?sport=nfl&partner=" 
+				
+				class="btn btn-primary btn-large" onclick="ga('send','event','Mock Limit','Click','Get HOF');ga('DWTracker.send','event','Mock Limit','Click','Get HOF');">
+				Upgrade Now
+			</a>
+			<a href="/premium/?sport=nfl&partner="
+				
+				 class="btn btn-large"
+				 onclick="ga('send','event','Mock Limit','Click','Learn More');ga('DWTracker.send','event','Mock Limit','Click','Learn More');">
+				Learn More
+			</a>
+		</div>
+		<div class="separator"></div>
+		<table style="margin:0px auto;width:440px;text-align:left;font-size:14px">
+			<tr>
+				<td style="width:50%">
+					<ul>
+						<li><i class="fa fa-check-circle"></i>Advanced Draft Analysis</li>
+						<li><i class="fa fa-check-circle"></i>Real-time Draft Assistance</li>
+						<li><i class="fa fa-check-circle"></i>Custom Cheat Sheets</li>
+						<li><i class="fa fa-check-circle"></i>Keeper Leagues</li>
+					</ul>
+				</td>
+				<td style="width:50%">
+					<ul>
+						<li><i class="fa fa-check-circle"></i>Auction Drafts</li>
+						<li><i class="fa fa-check-circle"></i>Value Based Drafting</li>
+						<li><i class="fa fa-check-circle"></i>Opponent Pick Predictor</li>
+						<li><i class="fa fa-check-circle"></i>...and much more!</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		
+	  </div>
+	</div>
+	
+  
+
+
+
+
+
+
+
+<footer>    <div class='container'><div class='column-row clearfix'><div class='footer-column three columns'>  <h4><a href='/football/'>NFL</a></h4>  <ul>     <li><a href='/football/mock-draft-simulator/'>Draft Simulator</a></li>     <li><a href='/football/draft-assistant/'>Draft Assistant</a></li>     <li><a href='/football/cheat-sheets/'>Cheat Sheet Creator</a></li>     <li><a href='/football/draft-analyzer/'>Draft Analyzer</a></li> <li><a href='/football/auction-calculator/'>Auction Calculator</a></li>     <li><a href='/football/draft-software/'>Draft Software</a></li>     <li><a href='/football/draft-tools/'>Draft Tools</a></li>  </ul></div><div class='footer-column three columns'>  <h4><a href='/baseball/'>MLB</a></h4>  <ul>     <li><a href='/baseball/mock-draft-simulator/'>Draft Simulator</a></li>     <li><a href='/baseball/draft-assistant/'>Draft Assistant</a></li>     <li><a href='/baseball/cheat-sheets/'>Cheat Sheet Creator</a></li>     <li><a href='/baseball/draft-analyzer/'>Draft Analyzer</a></li> <li><a href='/baseball/auction-calculator/'>Auction Calculator</a></li>     <li><a href='/baseball/draft-software/'>Draft Software</a></li>     <li><a href='/baseball/draft-tools/'>Draft Tools</a></li>  </ul></div><div class='footer-column three columns'>  <h4><a href='/basketball/'>NBA</a></h4>  <ul>     <li><a href='/basketball/mock-draft-simulator/'>Draft Simulator</a></li>     <li><a href='/basketball/draft-assistant/'>Draft Assistant</a></li>     <li><a href='/basketball/cheat-sheets/'>Cheat Sheet Creator</a></li>     <li><a href='/basketball/draft-analyzer/'>Draft Analyzer</a></li>     <li><a href='/basketball/draft-software/'>Draft Software</a></li>     <li><a href='/basketball/draft-tools/'>Draft Tools</a></li>  </ul></div><div class='footer-column three columns'>  <h4><a href='#'>Join Us</a></h4>  <ul>     <li><a href='https://secure.fantasypros.com/accounts/register/?next=http%3A%2F%2Fdraftwizard.fantasypros.com%2FfpStart%3FcswAction%3DRhttp%253A%252F%252Fdraftwizard.fantasypros.com%252Fd%252F%253Fsport%253Dnfl%253B'>Register</a></li>     <li><a href='https://twitter.com/FantasyPros' target='_blank'>NFL Twitter</a></li>     <li><a href='https://twitter.com/FantasyProsMLB' target='_blank'>MLB Twitter</a></li>     <li><a href='https://twitter.com/FantasyProsNBA' target='_blank'>NBA Twitter</a></li>     <li><a href='https://www.facebook.com/FantasyPros' target='_blank'>Facebook</a></li>  </ul></div></div>        <div class='row column-row'>            <div class='footer-social-icons clearfix'>                <a href='https://www.facebook.com/FantasyPros' target='_blank'><i class='fa fa-facebook'></i></a>                <a href='https://twitter.com/FantasyPros' target='_blank'><i class='fa fa-twitter'></i></a>                <a href='https://www.instagram.com/fantasypros/' target='_blank'><i class='fa fa-instagram'></i></a>            </div>            <hr>            <div class='footer-featured-row row'>                <div class='pull-left'>                    <ul>                    <li><a href='/football/mock-drafts/'>Draft Directory</a></li>                    <li><a href='/football/adp/mock-drafts/'>ADP</a></li>                        <li><a href='/football/faq/'>Draft Wizard FAQ</a></li>                    </ul>                </div>                <div class='pull-right'>                    <ul>                        <li><a href='https://www.fantasypros.com/about/contact/'>Report a Bug</a></li>                        <li><a href='https://www.fantasypros.com/about/legal/'>Terms of Use</a></li>                        <li><a href='https://www.fantasypros.com/about/privacy/'>Privacy Policy</a></li>                    </ul>                </div>                <div class='footer-logo'>                    <a href='https://www.fantasypros.com/'><img src='//images.fantasypros.com/images/logos/300x60_r.png' style='width: 210px;' /></a>                </div>            </div>            <hr>            <p class='copyright'>&copy; Copyright 2010-2017 FantasyPros.com</p>            </div>	    </div>	</div></footer> <script type='text/javascript'>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: '2', c2: '18410647' });
+  (function() {
+    var s = document.createElement('script'), el = document.getElementsByTagName('script')[0]; s.async = true;
+    s.src = (document.location.protocol == 'https:' ? 'https://sb' : 'http://b') + '.scorecardresearch.com/beacon.js';
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src='http://b.scorecardresearch.com/p?c1=2&c2=18410647&cv=2.0&cj=1' />
+</noscript>
+<!-- Quantcast Tag -->
+<script type='text/javascript'>
+var _qevents = _qevents || [];
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == 'https:' ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+elem.async = true;
+elem.type = 'text/javascript';
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+_qevents.push({
+qacct:'p-vaFYf4YVQRz-3'
+});
+</script>
+<noscript>
+<div style='display:none;'>
+<img src='//pixel.quantserve.com/pixel/p-vaFYf4YVQRz-3.gif' border='0' height='1' width='1' alt='Quantcast'/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+</div></body></html>
