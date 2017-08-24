@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
     <link rel="stylesheet" href="app/assets/stylesheets/draftclient.css">
+    <link rel="stylesheet" href="/flipclock.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 </head>
 <body>
     
@@ -18,7 +20,7 @@
         </div>
         
         <div class="marquee">
-                <!--recent player marquee-->
+            <marquee behavior="scroll" direction="left">This is a tessst</marquee>
         </div>
     </div>
     
@@ -31,9 +33,58 @@
         
         <div class="player-pool">
             <!--api integration-->
+            <table class="pure-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Bye</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr class="pure-table-odd">
+                        <td>1</td>
+                        <td>David Johnson</td>
+                        <td>6</td>
+                        <td>350</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>Le'Veon Bell</td>
+                        <td>8</td>
+                        <td>337</td>
+                    </tr>
+                    
+                    <tr class="pure-table-odd">
+                        <td>3</td>
+                        <td>Julio Jones</td>
+                        <td>11</td>
+                        <td>310</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>4</td>
+                        <td>O'dell Beckham Jr.</td>
+                        <td>9</td>
+                        <td>305</td>
+                    </tr>
+                    
+                    <tr class="pure-table-odd">
+                        <td>5</td>
+                        <td>Bubba Gump</td>
+                        <td>7</td>
+                        <td>304</td>
+                    </tr>
+                </tbody>
+                
+            </table>
         </div>
         
         <div class="rosters">
+            <!--Add a drop down option to cycle between teams here(bootstrap)-->
             <!--rosters-->
         </div>
     </div>
@@ -46,14 +97,43 @@
         </div>
         
         <div class="queue">
+            Player Queue
+            <table class="pure-table">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Name</td>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr class="pure-table-odd">
+                        <td>1</td>
+                        <td>Charlie Murphy</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>2</td>
+                        <td>Bo Burnham</td>
+                    </tr>
+                    
+                    <tr class="pure-table-odd">
+                        <td>3</td>
+                        <td>Randy Savage</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--drag and drop system using tables-->
             <!---Players highlighted player pools information-->
         </div>
         
-        <div class="misc-btn">
+        <!--<div class="misc-btn"> Advanced leave out for time being-->
             <!---initiate a trade button and request time button...pops up modal-->
-        </div>
+        <!--</div>-->
     </div>
 
+<script type="text/javascript" src="/flipclock.js"></script>
+<script type="text/javascript" src="/flipclock.min.js"></script>
 <script type="text/javascript" src="https://use.fontawesome.com/a6f8944a21.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
